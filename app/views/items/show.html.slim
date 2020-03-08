@@ -1,0 +1,22 @@
+p#notice
+  = notice
+p
+  strong
+    | Name:
+  = @item.name
+p
+  strong
+    | Image:
+  = (0...@item.images.count).each do |image|
+    = image_tag(@item.images[image])
+p
+  strong
+    | Price:
+  = @item.price
+p
+  strong
+    | Description:
+  = @item.description
+= link_to 'Edit', edit_item_path(@item)
+|  |
+= link_to 'Back', items_path

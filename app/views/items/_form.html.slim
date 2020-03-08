@@ -1,0 +1,24 @@
+= form_with(model: item, local: true) do |form|
+  - if item.errors.any?
+    #error_explanation
+      h2
+        = pluralize(item.errors.count, "error")
+        |  prohibited this item from being saved:
+      ul
+        - item.errors.full_messages.each do |message|
+          li
+            = message
+  .field
+    = form.label :name
+    = form.text_field :name
+  .field
+    = form.label :images
+    = form.file_field :images, multiple: true  
+  .field
+    = form.label :price
+    = form.number_field :price
+  .field
+    = form.label :description
+    = form.text_field :description
+  .actions
+    = form.submit

@@ -1,0 +1,17 @@
+p#notice
+  = notice
+p
+  strong
+    | Name:
+  = @look.name
+p
+  strong
+    | Price:
+  = @look.price
+p
+  strong
+    | Description:
+  = @look.description
+= link_to 'Edit', edit_look_path(@look)
+|  | 
+= link_to 'Back', looks_path

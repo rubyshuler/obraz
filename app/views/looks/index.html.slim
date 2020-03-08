@@ -1,0 +1,31 @@
+p#notice
+  = notice
+h1
+  | Looks
+table
+  thead
+    tr
+      th
+        | Name
+      th
+        | Price
+      th
+        | Description
+      th[colspan="3"]
+  tbody
+    - @looks.each do |look|
+      tr
+        td
+          = look.name
+        td
+          = look.price
+        td
+          = look.description
+        td
+          = link_to 'Show', look
+        td
+          = link_to 'Edit', edit_look_path(look)
+        td
+          = link_to 'Destroy', look, method: :delete, data: { confirm: 'Are you sure?' }
+br
+= link_to 'New Look', new_look_path
