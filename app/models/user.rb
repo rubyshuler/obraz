@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   enum role: [:admin, :moderator]
 
+  has_one :designer
+  has_one :customer
+
   has_many :messages, dependent: :destroy
 
   has_one_attached :image

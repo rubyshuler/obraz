@@ -4,12 +4,14 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.all.with_attached_images
+    # render json: @items, each_serializer: ItemSerializer
   end
 
   # GET /items/1
   # GET /items/1.json
   def show
+    # render json: @item, serializer: ItemSerializer
   end
 
   # GET /items/new
@@ -25,6 +27,7 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
+    @item.designer = current_user.designer
 
     respond_to do |format|
       if @item.save
