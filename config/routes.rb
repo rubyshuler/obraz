@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'items#index'
+  # root to: 'pages/index'
   devise_for :users
 
   resources :shopping_carts
