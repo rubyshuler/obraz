@@ -13,9 +13,9 @@
 
     .cover {
       background-color: $purple;
-      width: 256px;
-      height: 240px;
-      border-radius: 9px;
+      width: 544px;
+      height: 510px;
+      border-radius: 8px;
     }
 
     .look_card_info {
@@ -23,5 +23,77 @@
       justify-content: space-between;
       margin: 8px 8px 0;
     }
+  }
+}
+
+.look_container {
+  display: flex;
+  flex-direction: column;
+
+  .look_info {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+
+    .look_cover,
+    p.middle-p {
+      margin-bottom: 40px;
+    }
+
+    .look_cover {
+      margin-top: 20px;
+      width: 1124px;
+      height: 348px;
+      margin-bottom: 40px;
+      background-color: $purple;
+    }
+
+    p.middle-p {
+      margin-bottom: 40px;
+      width: 544px;
+    }
+
+    .look_photos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      .photo {
+        margin-bottom: 32px;
+      }
+
+      .photo:first-child {
+        width: 736px;
+        height: 492px;
+        background-color: $purple;
+      }
+
+      .photo:nth-child(2) {
+        width: 352px;
+        height: 492px;
+        background-color: $purple;
+      }
+
+      .photo:nth-child(3) {
+        width: 1124px;
+        height: 432px;
+        background-color: $purple;
+      }
+    }
+
+    .look_buy {
+      margin: 40px auto;
+      background-size: contain;
+      width: 178px;
+      height: 178px;
+      background-image: url("star_button.svg");
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .full_look {
+    margin-top: 32px;
   }
 }

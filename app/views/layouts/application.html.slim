@@ -16,10 +16,11 @@ html
         = link_to 'Вещи', items_path
         a Мероприятия
       .icons
-        a Username
-        a.bell Not
-        a.Like Like
-        a.bag Bag
+        - if user_signed_in?
+          a ЮзерНейм
+        a.bell
+        a.like
+        a.bag
 
     .container
       = yield

@@ -1,9 +1,19 @@
 @import 'colors';
 
+h1,
 h2,
 h3,
 p {
-  color: #111;
+  color: $black_font;
+}
+
+a.white {
+  color: $white;
+}
+
+h1 {
+  font-size: 48px;
+  line-height: 56px;
 }
 
 h2 {
@@ -19,6 +29,11 @@ h3 {
 p {
   font-size: 18px;
   line-height: 28px;
+}
+
+p.middle-p {
+  font-size: 16px;
+  line-height: 26px;
 }
 
 p.small-p {

@@ -8,16 +8,17 @@
   align-items: center;
 
   .logo {
-    background-image: url('logo.png');
+    background-image: url("logo.png");
     margin-left: 160px;
     background-size: contain;
     width: 70px;
     height: 24px;
   }
 
-  .menu_items,
-  .icons {
+  .icons,
+  .menu_items {
     display: flex;
+    align-content: center;
   }
 
   .menu_items {
@@ -28,8 +29,34 @@
 
   .icons {
     margin-right: 160px;
+
     a {
       margin-left: 16px;
+    }
+
+    .bag,
+    .bell,
+    .like {
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .bell {
+      background-image: url("bell_icon.svg");
+      width: 16px;
+      height: 20px;
+    }
+
+    .like {
+      background-image: url("like_icon.svg");
+      width: 20px;
+      height: 16px;
+    }
+
+    .bag {
+      background-image: url("bag_icon.svg");
+      width: 18px;
+      height: 18px;
     }
   }
 }

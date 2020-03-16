@@ -69,6 +69,6 @@ class LooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def look_params
-      params.require(:look).permit(:name, :price, :description)
+      params.require(:look).permit(:name, :price, :description, :designer_id)
     end
 end
