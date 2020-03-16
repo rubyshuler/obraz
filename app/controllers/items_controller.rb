@@ -4,8 +4,18 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all.with_attached_images
-    # render json: @items, each_serializer: ItemSerializer
+    items = Item.all.with_attached_images
+    @items_cards = items.map do |item|
+     item.as_json(only: [:id, :name, :price])
+      .merge(
+        { images: (0...item.images.count).map do |img|
+            {
+              image: item.thumbnail(img)
+            }
+          end
+        }
+      )
+    end
   end
 
   # GET /items/1

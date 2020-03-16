@@ -1,22 +1,43 @@
-p#notice
-  = notice
-p
-  strong
-    | Name:
-  = @item.name
-p
-  strong
-    | Image:
-  = (0...@item.images.count).each do |image|
-    = image_tag(@item.thumbnail(image))
-p
-  strong
-    | Price:
-  = @item.price
-p
-  strong
-    | Description:
-  = @item.description
-= link_to 'Edit', edit_item_path(@item)
-|  |
-= link_to 'Back', items_path
+.item_container
+  .breadcrumbs
+    a Главная
+    span →
+    a Бренд
+    span →
+    a Платье
+
+  .item_image_info
+    .item_image
+      .additional_images
+        .iii
+        .iii
+        .iii
+      - (0...@item.images.count).each do |image|
+        = image_tag(@item.thumbnail(image))
+
+    .item_info
+      h3 = @item.name
+
+      p.description = @item.description
+
+      .size
+        p select size
+
+      .separator
+
+      h2 = @item.price
+
+      .buttons
+        button
+          p Добавить в корзину
+          .bag_icon
+        .favorites_icon
+
+
+  .item_details
+    p = @item.details
+
+  .full_look
+    h2 Купить лук целиком
+    .item_cards
+      = render 'item_card', item: @item

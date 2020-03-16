@@ -7,5 +7,27 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
   body
-    = yield
+    .menubar
+      .logo
+      .menu_items
+        = link_to 'Луки', looks_path
+        = link_to 'Вещи', items_path
+        a Мероприятия
+      .icons
+        a Username
+        a.bell Not
+        a.Like Like
+        a.bag Bag
+
+    .container
+      = yield
+
+      footer
+        p.small-p.grey © 2020 OBRAZ
+
+        .footer
+          p.small-p.grey FAQ
+          p.small-p.grey Правила и условия
+          p.small-p.grey Конфиденциальность и cookie-файлы

@@ -5,8 +5,10 @@ class Item < ApplicationRecord
   has_many_attached :images
   validate :images_exist
 
+  enum size: [:xs, :s, :m, :l, :xl, :one_size]
+
   def thumbnail(url)
-    return self.images[url].variant(resize: '300X300').processed
+    return self.images[url].variant(resize: '576X600').processed
   end
 
   def images_exist

@@ -29,6 +29,8 @@ gem 'devise'
 gem 'mini_magick'
 gem "slim-rails"
 
+gem 'jquery-rails'
+
 gem 'active_model_serializers'
 
 # Use Active Storage variant

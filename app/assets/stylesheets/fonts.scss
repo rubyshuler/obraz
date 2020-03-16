@@ -1,0 +1,53 @@
+@import 'colors';
+
+h2,
+h3,
+p {
+  color: #111;
+}
+
+h2 {
+  font-size: 36px;
+  line-height: 46px;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 34px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 28px;
+}
+
+p.small-p {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.grey {
+  color: #65676E;
+}
+
+button p {
+  font-size: 16px;
+  line-height: auto;
+  color: #fff;
+}
+
+button p {
+  font-size: 16px;
+  line-height: auto;
+  color: #fff;
+}
+
+p.price_tag {
+  font-size: 16px;
+  padding-right: 16px;
+  padding-left: 16px;
+  height: 32px;
+  background-color: #F8F8F8;
+  color: $purple;
+  border-radius: 16px;
+}
