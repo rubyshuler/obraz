@@ -99,10 +99,11 @@
 
 .item_cards {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 
   .item_card {
     margin-top: 32px;
-    margin-right: 32px;
 
     .cover {
       background-color: $purple;
@@ -114,7 +115,7 @@
     .item_card_info {
       display: flex;
       justify-content: space-between;
-      margin: 8px 8px 128px;
+      margin: 8px 8px 0;
     }
   }
 }
