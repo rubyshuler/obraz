@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   # root to: 'pages/index'
   devise_for :users
 
-  resources :shopping_carts
-  resources :messages
   resources :orders
+
+  resources :messages
   resources :announcements
   resources :designers
   resources :customers

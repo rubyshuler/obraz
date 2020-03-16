@@ -6,6 +6,4 @@ class Order < ApplicationRecord
   has_many :items
 
   has_many :messages, dependent: :destroy
-
-  belongs_to :shopping_cart
 end
