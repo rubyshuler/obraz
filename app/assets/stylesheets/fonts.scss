@@ -66,3 +66,12 @@ p.price_tag {
   color: $purple;
   border-radius: 16px;
 }
+
+.status_button {
+  font-size: 18px;
+  line-height: 28px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background-color: $yellow;
+  align-items: center;
+}

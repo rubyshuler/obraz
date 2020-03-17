@@ -1,3 +1,105 @@
 // Place all the styles related to the Orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.order_container {
+  display: flex;
+  flex-direction: column;
+
+  .order_menu {
+    margin: 64px 0 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .log_out_icon {
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url("log_out_icon.svg");
+      width: 32px;
+      height: 24px;
+      margin-left: 8px;
+    }
+  }
+
+  .order_cards {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .created_at {
+      margin-bottom: 16px;
+    }
+
+    .order_card {
+      width: 928px;
+      height: 376px;
+      border: 1px solid #A9ABBD;
+      padding: 32px 96px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-radius: 8px;
+      margin-bottom: 32px;
+
+      .order_info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 32px;
+      }
+
+      .separator {
+        height: 1px;
+        width: 800px;
+        background-color: #D9DCE3;
+      }
+
+      .order_details {
+        margin-top: 32px;
+        width: 736px;
+        height: 214px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .first_row,
+        .second_row,
+        .third_row {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+        }
+
+        .first_row {
+          p.status_button {
+            margin-left: 105px;
+          }
+        }
+
+        .second_row {
+          align-items: flex-start;
+
+          p.grey {
+            width: 101px;
+          }
+
+          p.description {
+            margin-left: 64px;
+            width: 321px;
+          }
+
+          p.grey.second {
+            margin-left: 64px;
+          }
+        }
+
+        .third_row {
+          p.address {
+            margin-left: 108px;
+            width: 576px;
+          }
+        }
+      }
+    }
+  }
+}
