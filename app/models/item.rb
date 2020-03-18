@@ -1,11 +1,12 @@
 class Item < ApplicationRecord
+  enum chosen_size: %i[ xs s m l xl one_size ]
+
   has_many :favorites, dependent: :destroy
   belongs_to :designer
 
   has_many_attached :images
   validate :images_exist
 
-  enum size: [:xs, :s, :m, :l, :xl, :one_size]
 
   def thumbnail(url)
     return self.images[url].variant(resize: '576X600').processed

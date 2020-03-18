@@ -1,7 +1,8 @@
 .order_container
   .order_menu
-    h3 Stanislava Username
-    .log_out_icon
+    h3 #{Customer.find(5).user.name}
+    = link_to destroy_user_session_path, method: :delete do
+      .log_out_icon
 
   .order_cards
-    = render partial: 'order_card', collection: @orders
+    = render partial: 'order_card', collection: @orders, as: :order

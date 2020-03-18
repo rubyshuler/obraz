@@ -1,23 +1,7 @@
-.item_card
-  .cover
-  .item_card_info
-    p Кофта
-    p.price_tag 1500
-
-.item_card
-  .cover
-  .item_card_info
-    p Кофта
-    p.price_tag 1500
-
-.item_card
-  .cover
-  .item_card_info
-    p Кофта
-    p.price_tag 1500
-
-.item_card
-  .cover
-  .item_card_info
-    p Кофта
-    p.price_tag 1500  
+= link_to item_path(item_card) do
+  .item_card
+    .cover
+      = image_tag(item_card.images[0])
+    .item_card_info
+      p = item_card.name
+      p.price_tag = item_card.price

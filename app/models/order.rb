@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  enum status: [:in_progress]
+  enum status: { new_order: 'Новый', in_progress: 'В обработке' }
 
   belongs_to :customer
   has_many :designers, through: :items

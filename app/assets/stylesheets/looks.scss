@@ -12,10 +12,12 @@
     margin-top: 32px;
 
     .cover {
-      background-color: $purple;
-      width: 544px;
-      height: 510px;
-      border-radius: 8px;
+      img {
+        object-fit: cover;
+        width: 544px;
+        height: 510px;
+        border-radius: 8px;
+      }
     }
 
     .look_card_info {
@@ -42,10 +44,13 @@
 
     .look_cover {
       margin-top: 20px;
-      width: 1124px;
-      height: 348px;
       margin-bottom: 40px;
-      background-color: $purple;
+
+      img {
+        width: 1124px;
+        height: 348px;
+        object-fit: cover;
+      }
     }
 
     p.middle-p {
@@ -54,30 +59,31 @@
     }
 
     .look_photos {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-
       .photo {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
         margin-bottom: 32px;
-      }
+        object-fit: cover;
 
-      .photo:first-child {
-        width: 736px;
-        height: 492px;
-        background-color: $purple;
-      }
+        img:first-child {
+          width: 736px;
+          height: 492px;
+          object-fit: cover;
+        }
 
-      .photo:nth-child(2) {
-        width: 352px;
-        height: 492px;
-        background-color: $purple;
-      }
+        img:nth-child(2) {
+          width: 352px;
+          height: 492px;
+          object-fit: cover;
+        }
 
-      .photo:nth-child(3) {
-        width: 1124px;
-        height: 432px;
-        background-color: $purple;
+        img:nth-child(3) {
+          margin-top: 32px;
+          width: 1124px;
+          height: 432px;
+          object-fit: cover;
+        }
       }
     }
 
@@ -90,6 +96,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
+
+      a {
+        width: 84px;
+        text-align: center;
+      }
     }
   }
 

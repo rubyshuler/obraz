@@ -1,23 +1,6 @@
 .look_card
   .cover
+    = image_tag(look.images[0])
   .look_card_info
-    p Кофта
-    p.price_tag 1500
-
-.look_card
-  .cover
-  .look_card_info
-    p Кофта
-    p.price_tag 1500
-
-.look_card
-  .cover
-  .look_card_info
-    p Кофта
-    p.price_tag 1500
-
-.look_card
-  .cover
-  .look_card_info
-    p Кофта
-    p.price_tag 1500
+    p #{look.name}
+    p.price_tag #{look.price}

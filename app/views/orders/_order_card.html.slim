@@ -1,50 +1,24 @@
-p.grey.created_at 02.02.2020
+p.grey.created_at #{order.created_at.strftime('%d.%m.%Y')}
 
 .order_card
 
   .order_info
-    h2 Заказ №316
-    h2 13075₽
+    h2 Заказ #{order.id}
+    h2 3624 ₽
 
   .separator.long
 
   .order_details
     .first_row
       p.grey Статус
-      p.status_button Заказ оплачен
+      p.status_button #{order.status}
 
     .second_row
       p.grey Название товара
-      p.description Серая юбка, черный худи, кожана куртка, латексные трусы
+      p.description #{order.items.map { |item| p item.name }.join(', ')}
 
       p.grey.second Количество
-      p.price_tag 5 шт
-
-    .third_row
-      p.grey Адрес
-      p.address Россия, Московская область, Раменский р-он, р.п. Быково, пер. Щорса 2А
-
-
-.created_at 03.02.2020
-.order_card
-
-  .order_info
-    h2 Заказ №316
-    h2 13075₽
-
-  .separator.long
-
-  .order_details
-    .first_row
-      p.grey Статус
-      p.status_button Заказ оплачен
-
-    .second_row
-      p.grey Название товара
-      p.description Серая юбка, черный худи, кожана куртка, латексные трусы
-
-      p.grey.second Количество
-      p.price_tag 5 шт
+      p.price_tag #{order.items.count} шт
 
     .third_row
       p.grey Адрес

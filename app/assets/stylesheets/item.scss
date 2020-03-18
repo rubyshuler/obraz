@@ -31,12 +31,11 @@
         flex-direction: column;
         margin-right: 32px;
 
-        .iii {
+        img {
           width: 64px;
           height: 64px;
           margin-bottom: 32px;
           border-radius: 8px;
-          background-color: $purple;
         }
       }
 
@@ -60,6 +59,27 @@
         margin-bottom: 16px;
       }
 
+      .size {
+        form {
+          select {
+            font-size: 16px;
+            line-height: 26px;
+            width: 160px;
+            height: 48px;
+            background-color: white;
+            color: $grey2;
+            border: $grey2 solid 1px;
+
+            option {
+              width: 160px;
+              height: 48px;
+              background-color: white;
+              color: $grey2;
+            }
+          }
+        }
+      }
+
       .separator {
         height: 1px;
         width: 352px;
@@ -78,11 +98,13 @@
           margin-right: 8px;
         }
 
-        .bag_icon {
+        .add_to_bag_icon {
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-image: url("add_to_bag_icon.svg");
           margin-right: 16px;
           width: 20px;
           height: 20px;
-          background-color: black;
         }
       }
     }
@@ -90,6 +112,17 @@
 
   .item_details {
     margin-top: 64px;
+    margin-left: 96px;
+
+    .item_detail {
+      display: flex;
+      align-items: center;
+
+      span {
+        margin-right: 24px;
+        color: $purple;
+      }
+    }
   }
 
   .full_look {
@@ -100,16 +133,18 @@
 .item_cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  margin-left: -16px;
 
   .item_card {
-    margin-top: 32px;
+    margin: 32px 8px 16px;
 
     .cover {
-      background-color: $purple;
-      width: 256px;
-      height: 240px;
-      border-radius: 8px;
+      img {
+        border-radius: 8px;
+        width: 256px;
+        height: 240px;
+        object-fit: cover;
+      }
     }
 
     .item_card_info {

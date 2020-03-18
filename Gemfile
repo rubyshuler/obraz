@@ -29,6 +29,9 @@ gem 'devise'
 gem 'mini_magick'
 gem "slim-rails"
 
+gem "ffaker"
+gem "faker"
+
 gem 'jquery-rails'
 
 gem 'active_model_serializers'

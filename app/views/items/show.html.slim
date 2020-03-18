@@ -9,11 +9,10 @@
   .item_image_info
     .item_image
       .additional_images
-        .iii
-        .iii
-        .iii
-      - (0...@item.images.count).each do |image|
-        = image_tag(@item.thumbnail(image))
+        - (0...@item.images.count).each do |image|
+          = image_tag(@item.thumbnail(image))
+
+      = image_tag(@item.images[0])
 
     .item_info
       h3 = @item.name
@@ -21,7 +20,8 @@
       p.description = @item.description
 
       .size
-        p select size
+        = form_for @item do |f|
+          = f.select :chosen_size, Item.chosen_sizes, :selected => params[:chosen_size], data: { action: 'add_to_order'}
 
       .separator
 
@@ -29,15 +29,17 @@
 
       .buttons
         button
-          p Добавить в корзину
-          .bag_icon
+          p #{link_to "Добавить в корзину", add_to_order_item_path(@item, params[:chosen_size]), method: :patch}
+          .add_to_bag_icon
         .favorites_icon
 
 
   .item_details
-    p = @item.details
-
+    - @item.details.each do |detail|
+      .item_detail
+        span •
+        = content_tag(:p, detail)
   .full_look
     h2 Купить лук целиком
     .item_cards
-      = render 'item_card', item: @item
+      = render partial: 'item_card', collection: @items_cards, as: :item_card

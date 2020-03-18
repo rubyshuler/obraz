@@ -10,17 +10,19 @@ html
 
   body
     .menubar
-      .logo
+      = link_to root_path do
+        .logo
       .menu_items
         = link_to 'Луки', looks_path
         = link_to 'Вещи', items_path
         a Мероприятия
       .icons
         - if user_signed_in?
-          a ЮзерНейм
+          = link_to current_user.name, orders_path
         a.bell
         a.like
-        a.bag
+        = link_to orders_path do
+          .bag
 
     .container
       = yield

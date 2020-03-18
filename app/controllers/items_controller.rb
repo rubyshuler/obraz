@@ -1,26 +1,28 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :add_to_order]
 
   # GET /items
   # GET /items.json
   def index
-    items = Item.all.with_attached_images
-    @items_cards = items.map do |item|
-     item.as_json(only: [:id, :name, :price])
-      .merge(
-        { images: (0...item.images.count).map do |img|
-            {
-              image: item.thumbnail(img)
-            }
-          end
-        }
-      )
-    end
+    @items_cards = Item.all.with_attached_images
+    # @items_cards = items.map do |item|
+    #  item.as_json(only: [:id, :name, :price])
+    #   .merge(
+    #     { images: (0...item.images.count).map do |img|
+    #         {
+    #           image: item.thumbnail(img)
+    #         }
+    #       end
+    #     }
+    #   )
+    # end
   end
 
   # GET /items/1
   # GET /items/1.json
   def show
+    @items_cards = Item.all.with_attached_images
+
     # render json: @item, serializer: ItemSerializer
   end
 
@@ -74,6 +76,16 @@ class ItemsController < ApplicationController
     end
   end
 
+  def add_to_order
+    @item.amount -= 1
+    @order_item = @item.clone
+    @order_item.update(chosen_size: params[:chosen_size])
+    @order = Order.create!(customer_id: current_user.customer_id)
+    @order_item.order_id = @order.id
+    @order_item.save!
+    redirect_to orders_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
@@ -82,6 +94,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:name, :price, :description, images: [])
+      params.require(:item).permit(:name, :price, :description, :amount, :chosen_size, images: [])
     end
 end

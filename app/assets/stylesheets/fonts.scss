@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 @import 'colors';
 
 h1,
@@ -5,6 +6,11 @@ h2,
 h3,
 p {
   color: $black_font;
+  font-family: 'Poppins', sans-serif;
+}
+
+a {
+  font-family: 'Poppins', sans-serif;
 }
 
 a.white {

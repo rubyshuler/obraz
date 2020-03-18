@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_16_230331) do
+ActiveRecord::Schema.define(version: 2020_03_17_233212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,10 +75,12 @@ ActiveRecord::Schema.define(version: 2020_03_16_230331) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "designer_id"
-    t.integer "size"
+    t.integer "chosen_size"
     t.integer "model_height"
     t.integer "model_weight"
     t.string "details", array: true
+    t.integer "amount"
+    t.integer "order_id"
   end
 
   create_table "looks", force: :cascade do |t|
@@ -101,10 +103,17 @@ ActiveRecord::Schema.define(version: 2020_03_16_230331) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "status"
+    t.string "status", default: "Новый"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "customer_id"
+  end
+
+  create_table "shopping_carts", force: :cascade do |t|
+    t.bigint "customer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_shopping_carts_on_customer_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -129,4 +138,5 @@ ActiveRecord::Schema.define(version: 2020_03_16_230331) do
   add_foreign_key "favorites", "looks"
   add_foreign_key "messages", "orders"
   add_foreign_key "messages", "users"
+  add_foreign_key "shopping_carts", "customers"
 end

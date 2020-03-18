@@ -10,6 +10,7 @@ class LooksController < ApplicationController
   # GET /looks/1
   # GET /looks/1.json
   def show
+    @items_cards = Item.all.take(5)
   end
 
   # GET /looks/new
@@ -69,6 +70,6 @@ class LooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def look_params
-      params.require(:look).permit(:name, :price, :description, :designer_id)
+      params.require(:look).permit(:name, :price, :description, :designer_id, images: [])
     end
 end

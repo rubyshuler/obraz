@@ -17,5 +17,7 @@
   .field
     = form.label :description
     = form.text_field :description
+  .field
+    = form.file_field :images, multiple: true  
   .actions
     = form.submit

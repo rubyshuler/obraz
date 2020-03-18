@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :shopping_carts
   root to: 'items#index'
   # root to: 'pages/index'
   devise_for :users
@@ -16,6 +17,9 @@ Rails.application.routes.draw do
 
   resources :items do
     resource :favorite, only: [:create, :destroy]
+    member do
+      patch :add_to_order
+    end
   end
 
   resources :messages, only: [:create, :index, :destroy]
