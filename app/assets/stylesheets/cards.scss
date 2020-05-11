@@ -1,0 +1,283 @@
+@import "colors";
+@import "fonts";
+@import "components";
+
+// CARDS COMPONENTS
+// .color style='--color: red'
+
+@mixin color {
+  .color {
+    background-color: var(--color);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 16px;
+
+    box-shadow: -1px 1px 2px 0px rgba(67, 70, 74, 0.01);
+    box-shadow: -2px 2px 5px 0px rgba(67, 70, 74, 0.12);
+  }
+}
+
+.colors {
+  display: flex;
+  @include color;
+}
+
+.designer_name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .logo_name {
+    display: flex;
+
+    .logo {
+      img {
+        @include images(56px, 56px);
+        border-radius: 50%;
+      }
+    }
+
+    h1 {
+      width: 742px;
+      margin-left: 20px;
+    }
+  }
+
+  .edit {
+    font-size: 18px;
+    line-height: 24px;
+    color: $purple;
+  }
+}
+
+@mixin description {
+  .description {
+    width: 352px;
+    > * {
+      margin-bottom: 20px;
+    }
+    .default_input {
+      width: 352px;
+    }
+    .buttons {
+      display: flex;
+
+      .l_button.primary {
+        margin-right: 20px;
+        width: 280px;
+      }
+    }
+  }
+}
+
+// ITEMS
+
+@mixin card($width, $height, $b_width) {
+  display: flex;
+  flex-direction: column;
+  width: $width;
+  margin: 0 16px;
+
+  .cover {
+    img {
+      @include images($width, $height);
+    }
+    .l_badge.primary_badge.sq,
+    .l_button.primary_black {
+      position: absolute;
+      margin-left: 24px;
+    }
+
+    .l_badge.primary_badge.sq {
+      margin-top: 24px;
+    }
+
+    .l_button.primary_black {
+      width: $b_width !important;
+      margin-top: -80px;
+    }
+  }
+
+  .info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .title {
+      display: flex;
+      flex-direction: column;
+      @include p2;
+      h3 {
+        margin-top: 12px;
+        display: flex;
+        width: 427
+      }
+      p {
+        margin-top: 4px;
+        opacity: 0.5;
+      }
+    }
+
+    .l_badge.default_badge {
+      height: 44px;
+    }
+  }
+
+}
+
+.l_item_cards {
+  .item_card {
+    @include card(544px, 564px, 496px);
+  }
+}
+
+.m_item_cards {
+  .item_card {
+    @include card(544px, 240px, 496px);
+  }
+}
+
+.s_item_cards {
+  .item_card {
+    @include card(256px, 240px, 208px);
+  }
+}
+
+.item_h_card {
+  display: flex;
+  flex-direction: row;
+
+  .item_gallery {
+    display: flex;
+    width: 640px;
+    img {
+      @include images(544px, 544px);
+    }
+    .gallery_flow {
+      display: flex;
+      flex-direction: column;
+      img {
+        @include images(64px, 64px);
+      }
+    }
+  }
+
+  @include description;
+}
+
+
+// LOOK
+
+.m_look_cards {
+  .look_card_sq {
+    @include card(352px, 400px, 304px);
+  }
+}
+
+.look_card {
+  display: flex;
+  flex-direction: row;
+
+  img {
+    @include images(736px, 544px);
+  }
+
+  @include description;
+}
+
+// ORDERS
+
+@mixin order {
+  border: 1px solid $gray3;
+  border-radius: 4px;
+  padding: 32px;
+  .order_title {
+    display: flex;
+    padding-bottom: 16px;
+  }
+  .order_description {
+    padding: 20px 0;
+  }
+
+  .hr {
+    border-bottom: 1px solid $gray3;
+    padding-top: 16px 0;
+  }
+
+  .order_images {
+    display: flex;
+    padding-top: 20px;
+    img {
+      @include images(156px, 156px);
+      border-radius: 4px;
+    }
+  }
+}
+
+// .orders
+//   .order
+//     .order_title
+//       h3
+//         | Заказ №38435678924,
+//         span 22 400₽
+//       div
+//         .spacing-xs-w
+//       .m_badge.status_badge
+//         span
+//         | Оплачен
+//     .order_description
+//       p Поступил: 2 мая 11:20
+//       p Доставка: Россия, Московская область, Раменский р-он, р.п. Быково, пер. Щорса 2А
+//     .hr
+//     .order_images
+//       = image_tag(Item.last.images[0])
+//       div
+//         .spacing-m-w
+//       = image_tag(Item.last.images[0])
+//       div
+//         .spacing-m-w
+//       = image_tag(Item.last.images[0])
+
+.order {
+  @include order;
+}
+
+
+// BANNERS
+
+@mixin banner($width, $height, $star, $margin-top) {
+  img {
+    @include images($width, $height);
+  }
+  .banner_info {
+    position: absolute;
+    .star {
+      @include star($star);
+    }
+    .info,
+    h2 {
+      color: $white;
+      margin-top: $margin-top;
+    }
+    h2 {
+      margin-left: 32px;
+      width: 568px;
+    }
+    .info {
+      width: 288px;
+      padding: 0 8px;
+    }
+  }
+}
+
+.l_event_banner {
+  @include banner(1120px, 348px, 220px, 0);
+}
+
+.m_event_banner {
+  @include banner(736px, 348px, 188px, 32px);
+}
+
+.s_event_banner {
+  @include banner(304px, 348px, 188px, 48px);
+}

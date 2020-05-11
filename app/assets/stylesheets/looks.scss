@@ -1,110 +1,47 @@
 // Place all the styles related to the Looks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-@import 'colors';
+@import "colors";
+@import "components";
 
-.look_cards {
+// HOME PAGE
+.look_additional_info {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  .quote {
+    width: 256px;
+    height: 220px;
+  }
+  .additional_info {
+    width: 544px;
+    height: 252px;
+  }
+}
 
+// SHOW
+.no_title {
   .look_card {
-    margin-top: 32px;
-
-    .cover {
-      img {
-        object-fit: cover;
-        width: 544px;
-        height: 510px;
-        border-radius: 8px;
+    .description {
+      h2:first-child {
+        display: none;
       }
-    }
-
-    .look_card_info {
-      display: flex;
-      justify-content: space-between;
-      margin: 8px 8px 0;
     }
   }
 }
 
-.look_container {
+.images {
   display: flex;
-  flex-direction: column;
-
-  .look_info {
-    margin-top: 48px;
-    display: flex;
-    flex-direction: column;
-
-    .look_cover,
-    p.middle-p {
-      margin-bottom: 40px;
-    }
-
-    .look_cover {
-      margin-top: 20px;
-      margin-bottom: 40px;
-
-      img {
-        width: 1124px;
-        height: 348px;
-        object-fit: cover;
-      }
-    }
-
-    p.middle-p {
-      margin-bottom: 40px;
-      width: 544px;
-    }
-
-    .look_photos {
-      .photo {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        margin-bottom: 32px;
-        object-fit: cover;
-
-        img:first-child {
-          width: 736px;
-          height: 492px;
-          object-fit: cover;
-        }
-
-        img:nth-child(2) {
-          width: 352px;
-          height: 492px;
-          object-fit: cover;
-        }
-
-        img:nth-child(3) {
-          margin-top: 32px;
-          width: 1124px;
-          height: 432px;
-          object-fit: cover;
-        }
-      }
-    }
-
-    .look_buy {
-      margin: 40px auto;
-      background-size: contain;
-      width: 178px;
-      height: 178px;
-      background-image: url("star_button.svg");
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      a {
-        width: 84px;
-        text-align: center;
-      }
-    }
+  flex-wrap: wrap;
+  justify-content: space-between;
+  img {
+    margin-bottom: 32px;
+    @include images(544px, 786px);
   }
+}
 
-  .full_look {
-    margin-top: 32px;
+.button_star_container {
+  display: flex;
+  justify-content: center;
+  .button_star {
+    @include star(188px);
   }
 }

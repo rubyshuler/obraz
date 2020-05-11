@@ -1,83 +1,52 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
-@import 'colors';
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
+@import "colors";
 
-h1,
-h2,
-h3,
-p {
-  color: $black_font;
-  font-family: 'Poppins', sans-serif;
-}
-
-a {
-  font-family: 'Poppins', sans-serif;
-}
-
-a.white {
-  color: $white;
-}
-
-h1 {
+@mixin h1 {
   font-size: 48px;
   line-height: 56px;
 }
 
-h2 {
+h1 { @include h1; }
+
+@mixin h2 {
   font-size: 36px;
-  line-height: 46px;
+  line-height: 44px;
 }
 
-h3 {
+h2 { @include h2; }
+
+@mixin h3 {
   font-size: 24px;
   line-height: 34px;
 }
 
-p {
+h3 { @include h3; }
+
+@mixin h4 {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+h4 { @include h4; }
+
+@mixin p {
   font-size: 18px;
   line-height: 28px;
 }
 
-p.middle-p {
+p { @include p; }
+
+@mixin p2 {
   font-size: 16px;
-  line-height: 26px;
+  line-height: 24px;
 }
 
-p.small-p {
+@mixin p3 {
   font-size: 14px;
   line-height: 24px;
 }
 
-.grey {
-  color: #65676E;
-}
-
-button p {
-  font-size: 16px;
-  line-height: auto;
-  color: #fff;
-}
-
-button p {
-  font-size: 16px;
-  line-height: auto;
-  color: #fff;
-}
-
-p.price_tag {
-  font-size: 16px;
-  padding-right: 16px;
-  padding-left: 16px;
-  height: 32px;
-  background-color: #F8F8F8;
-  color: $purple;
-  border-radius: 16px;
-}
-
-.status_button {
-  font-size: 18px;
-  line-height: 28px;
-  padding: 10px 16px;
-  border-radius: 8px;
-  background-color: $yellow;
-  align-items: center;
+@mixin p4 {
+  font-size: 12px;
+  line-height: 20px;
 }

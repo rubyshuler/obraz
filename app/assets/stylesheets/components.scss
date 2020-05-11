@@ -1,0 +1,285 @@
+@import "colors";
+@import "fonts";
+
+// BUTTONS
+
+@mixin button($padding-h, $padding-w) {
+  padding: $padding-h $padding-w;
+  display: block;
+  border-radius: 8px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: center;
+  border: none;
+  @include button_disabled;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+@mixin border_button($color, $hover_color) {
+  color: $color;
+  border: 1px solid $color;
+  @include button_disabled;
+
+  &:hover {
+    cursor: pointer;
+    color: $hover_color;
+    border: 1px solid $hover_color;
+  }
+}
+
+@mixin button_font($font_size, $line_height) {
+  font-size: $font_size;
+  line-height: $line_height;
+}
+
+@mixin button_colors($background, $font_color, $hover) {
+  background-color: $background;
+  color: $font_color;
+  &:hover {
+    background-color: $hover;
+  }
+}
+
+@mixin button_disabled {
+  &:disabled {
+    opacity: 0.56;
+  }
+}
+
+.l_button {
+  @include button(16px, 16px);
+  @include button_font(18px, 24px);
+}
+
+.m_button {
+  @include button(8px, 12px);
+  @include button_font(16px, 28px);
+}
+
+.s_button {
+  @include button(8px, 12px);
+  @include button_font(14px, 20px);
+}
+
+.primary {
+  @include button_colors($purple, $white, $dark_purple);
+}
+
+.primary_black {
+  @include button_colors($black, $white, $light_black);
+}
+
+.outline {
+  @include border_button($purple, $dark_purple);
+}
+
+.flat {
+  @include button_colors(none, $purple, $light_purple);
+}
+
+// ICON BUTTONS
+
+@mixin icon_button($size) {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.l_icon_button {
+  @include icon_button(56px);
+}
+
+.m_icon_button {
+  @include icon_button(44px);
+}
+
+.s_icon_button {
+  @include icon_button(32px);
+}
+// BADGES
+
+@mixin badge($padding-h, $padding-w) {
+  display: block;
+  padding: $padding-h $padding-w;
+  border-radius: 40px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: center;
+  border: none;
+  white-space: nowrap;
+}
+
+.sq {
+  border-radius: 4px !important;
+}
+
+.l_badge {
+  @include badge(10px, 16px);
+  @include p2;
+}
+
+.m_badge {
+  @include badge(6px, 12px);
+  @include p4;
+}
+
+.default_badge {
+  @include button_colors($gray5, $purple, $gray5);
+}
+
+.primary_badge {
+  @include button_colors($yellow, $black, $yellow);
+}
+
+.status_badge {
+  @include button_colors($light_orange, $black, $light_orange);
+
+  span {
+    display: inline-block;
+    background-color: $orange;
+    width: 8px;
+    height: 8px;
+    margin-right: 8px;
+    border-radius: 50%;
+  }
+}
+
+// FILTERS
+
+@mixin filter($padding-h, $padding-w) {
+  display: flex;
+
+  .filter_item {
+    @include filter_item($padding-h, $padding-w);
+  }
+
+  :first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  :nth-child(2) {
+    border-radius: 0;
+    border-right-width: 0px;
+    border-left-width: 0px;
+  }
+
+  :nth-child(3) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+@mixin filter_item($padding-h, $padding-w) {
+  padding: $padding-h $padding-w;
+  border-radius: 4px;
+  border: 1px solid $purple;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.l_filter {
+  @include button_font(18px, 24px);
+  @include filter(16px, 36px);
+}
+
+.m_filter {
+  @include button_font(18px, 24px);
+  @include filter(10px, 24px);
+}
+
+.s_filter {
+  @include button_font(14px, 20px);
+  @include filter(6px, 16px);
+}
+
+// TAB
+
+.nav_tab {
+  display: flex;
+  border-bottom: 1px solid $gray3;
+  padding-bottom: -1px;
+
+  .tab {
+    @include p;
+    color: $black;
+    margin-right: 24px;
+
+    &.active {
+      color: $purple;
+      border-bottom: 2px solid $purple;
+      width: -webkit-fit-content;
+      width: -moz-fit-content;
+      width: fit-content;
+      padding-bottom: 8px;
+      margin-bottom: -1px;
+    }
+  }
+}
+
+// BREADCRUMBS
+
+@mixin breadcrumbs($a_left, $span_right) {
+  display: flex;
+  margin-top: 64px;
+
+  a {
+    margin-right: $a_left;
+    &:hover {
+      cursor: pointer;
+      color: $purple;
+    }
+  }
+
+  span {
+    margin-right: $span_right;
+    color: $black;
+  }
+}
+
+.l_breadcrumbs {
+  @include breadcrumbs(16px, 20px);
+  @include h3;
+}
+
+.m_breadcrumbs {
+  @include breadcrumbs(12px, 12px);
+  @include p;
+}
+
+.s_breadcrumbs {
+  @include breadcrumbs(8px, 12px);
+  @include p;
+}
+
+// IMAGES
+
+@mixin images($width, $height) {
+  border-radius: 8px;
+  width: $width;
+  height: $height;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+// STAR FIGURE
+
+@mixin star($size) {
+  background-image: url("star.svg");
+  width: $size;
+  height: $size;
+  background-size: contain;
+  text-align: center;
+  h3 {
+    line-height: $size;
+    color: $white;
+  }
+}

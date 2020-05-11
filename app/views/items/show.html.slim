@@ -1,45 +1,65 @@
-.item_container
-  .breadcrumbs
-    a Главная
-    span →
-    a Бренд
-    span →
-    a Платье
+.m_breadcrumbs
+  a Главная
+  span →
+  a Бренд
+  span →
+  a Платье
 
-  .item_image_info
-    .item_image
-      .additional_images
-        - (0...@item.images.count).each do |image|
-          = image_tag(@item.thumbnail(image))
+div
+  .spacing-xxl-h
 
-      = image_tag(@item.images[0])
+.item_h_card
+  .item_gallery
+    .gallery_flow
+      - (1...@item.images.count).each do |image|
+        = image_tag(@item.thumbnail(image))
+        div
+          .spacing-xl-h
+    div
+      .spacing-xl-w
+    = image_tag(@item.images[0])
+  div
+    .spacing-xl-w
+  .description
+    h2 #{@item.name}
+    h2.gray1 #{@item.price} &#8381;
+    h4 #{@item.description}
+    .colors
+      .color style='--color: #783BFF'
+      .color style='--color: #FF612F'
+      .color style='--color: #ffffff'
+    select.default_input
+      option S
+    .buttons
+      .l_button.primary Добавить в корзину
+      .l_icon_button.outline
+        .favorite_purple
 
-    .item_info
-      h3 = @item.name
+div
+  .spacing-xl-h
 
-      p.description = @item.description
+.item_details
+  p
+    = @item.details
+    //.item_details
+    //  - @item.details.each do |detail|
+    //    .item_detail
+    //      span •
+    //      = content_tag(:p, detail)
 
-      .size
-        = form_for @item do |f|
-          = f.select :chosen_size, Item.chosen_sizes, :selected => params[:chosen_size], data: { action: 'add_to_order'}
+div
+  .spacing-xxxl-h
 
-      .separator
+div
+  .spacing-xl-h
 
-      h2 = @item.price
+h1 Образы с футболкой Питон
 
-      .buttons
-        button
-          p #{link_to "Добавить в корзину", add_to_order_item_path(@item, params[:chosen_size]), method: :patch}
-          .add_to_bag_icon
-        .favorites_icon
+div
+  .spacing-m-h
 
+.m_look_cards
+  = render partial: 'looks/look_card', collection: Look.all.limit(3), as: :look
 
-  .item_details
-    - @item.details.each do |detail|
-      .item_detail
-        span •
-        = content_tag(:p, detail)
-  .full_look
-    h2 Купить лук целиком
-    .item_cards
-      = render partial: 'item_card', collection: @items_cards, as: :item_card
+div
+  .spacing-huge-h

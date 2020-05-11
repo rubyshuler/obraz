@@ -13,24 +13,29 @@ html
       = link_to root_path do
         .logo
       .menu_items
-        = link_to 'Луки', looks_path
-        = link_to 'Вещи', items_path
-        a Мероприятия
-      .icons
+        = link_to 'Луки', looks_path, class: 'menu_item'
+        = link_to 'Вещи', items_path, class: 'menu_item'
+        a.menu_item Мероприятия
+      .menu_search
+        input.search_input placeholder='Поиск'
+        i.search
+
+      .menu_icons
+        .menu_icon.favorite
+        = link_to orders_path, class: 'menu_icon' do
+          .shopping_basket
         - if user_signed_in?
-          = link_to current_user.name, orders_path
-        a.bell
-        a.like
-        = link_to orders_path do
-          .bag
+          = link_to '', orders_path, class: 'menu_icon signed'
+        - else
+          = link_to '', new_user_session_path, class: 'menu_icon sign'
 
     .container
       = yield
 
-      footer
-        p.small-p.grey © 2020 OBRAZ
+    footer
+      p © 2020 OBRAZ
 
-        .footer
-          p.small-p.grey FAQ
-          p.small-p.grey Правила и условия
-          p.small-p.grey Конфиденциальность и cookie-файлы
+      .footer
+        p FAQ
+        p Правила и условия
+        p Конфиденциальность и cookie-файлы

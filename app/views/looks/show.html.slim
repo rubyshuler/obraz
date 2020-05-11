@@ -1,26 +1,52 @@
-.look_container
-  .breadcrumbs
-    a Главная
-    span →
-    a Бренд
-    span →
-    a Платье
+.m_breadcrumbs
+  = link_to 'Луки', looks_path
+  span →
+  = link_to 'Название бренда', looks_path
+  span →
+  = link_to @look.name, @look
 
-  .look_info
-    h1 #{@look.name}
-    .look_cover
-      = image_tag(@look.images[0])
-    p.middle-p Как отмечает Майкл Мескон, высокая информативность допускает общественный целевой сегмент рынка. Воздействие на потребителя искажает бизнес-план. Побочный PR-эффект, суммируя приведенные примеры, масштабирует процесс стратегического планирования. Можно предположить, что конвесия покупателя оправдывает рыночный фактор коммуникации. Воздействие на потребителя консолидирует связанный потребительский рынок. К тому же точечное воздействие транслирует потребительский анализ.
+div
+  .spacing-xl-h
 
-    .look_photos
-      .photo
-        - (0...3).each do |image|
-          = image_tag(@look.thumbnail(image))
+h1
+  = @look.name
 
-    .look_buy
-      a.white Купить лук #{@look.price}
+div
+  .spacing-m-h
 
-  .full_look
-    h2 Купить вещи по отдельности
-    .item_cards
-      = render partial: 'items/item_card', collection: @items_cards, as: :item_card
+.no_title
+  = render partial: 'look_card_l', object: @look, as: :look
+
+.look_additional_info
+  h3.quote “Ветер в волосах, голове и кожаных трусах”
+  div
+    .spacing-xl-w
+  p.additional_info Как отмечает Майкл Мескон, высокая информативность допускает общественный целевой сегмент рынка. Воздействие на потребителя искажает бизнес-план. Побочный PR-эффект, суммируя приведенные примеры, масштабирует процесс стратегического планирования. Можно предположить, что конвесия покупателя оправдывает рыночный фактор коммуникации. Воздействие на потребителя консолидирует связанный потребительский рынок. К тому же точечное воздействие транслирует потребительский анализ.
+
+div
+  .spacing-xxxl-h
+
+.images
+  - (1...@look.images.count).each do |image|
+    = image_tag(@look.thumbnail(image))
+
+div
+  .spacing-xl-h
+
+= link_to looks_path, class: 'button_star_container' do
+  .button_star
+    h3 Маркет
+
+div
+  .spacing-xl-h
+
+h1 Вещи из этого лука
+
+div
+  .spacing-m-h
+
+.s_item_cards
+  = render partial: 'items/item_card', collection: Item.all.limit(7), as: :item
+
+div
+  .spacing-huge-h

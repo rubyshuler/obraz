@@ -1,0 +1,110 @@
+@import "colors";
+@import "fonts";
+@import "inputs";
+
+@mixin menu_footer($height, $padding-w) {
+  background-color: $black;
+  width: 100vw;
+  height: $height;
+  color: $white;
+  // flex
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  // padding
+  padding: 0 $padding-w;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  // min-height: 100vh;
+
+  .menubar {
+    @include menu_footer(64px, 160px);
+    @include p2;
+
+    .logo {
+      background-image: url("logo.png");
+      background-size: contain;
+      width: 70px;
+      height: 24px;
+    }
+
+    .menu_search {
+      .search_input {
+        @include default_input(6px, 328px, 12px, 556px);
+        height: 32px;
+        background-color: $white;
+        border-radius: 16px;
+        @include p4;
+      }
+      .search {
+        position: absolute;
+        margin: 4px 0 4px -32px;
+      }
+    }
+
+    .menu_items {
+      .menu_item {
+        margin-left: 16px;
+      }
+    }
+
+    .menu_icons {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .menu_icon {
+        margin-left: 16px;
+        &:last-child {
+          margin-left: 24px;
+        }
+      }
+    }
+  }
+
+  .container {
+    width: 1120px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 64px - 72px);
+  }
+
+  footer {
+    @include menu_footer(72px, 184px);
+    padding: 0 184px;
+
+    p {
+      @include p3;
+      opacity: 0.5;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      p {
+        margin-left: 20px;
+      }
+    }
+  }
+}
+
+a {
+  &:link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &:visited {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &:hover {
+    color: inherit;
+  }
+}

@@ -1,0 +1,18 @@
+.look_card
+  = image_tag(look.images[0])
+  div
+    .spacing-xl-w
+  .description
+    h2 #{look.name}
+    h2.gray1 #{look.price} &#8381;
+    h4 #{look.description}
+    .colors
+      .color style='--color: #783BFF'
+      .color style='--color: #FF612F'
+      .color style='--color: #ffffff'
+    .buttons
+      .l_button.primary Купить лук целиком
+      .l_icon_button.outline
+        .favorite_purple
+div
+  .spacing-xxxl-h

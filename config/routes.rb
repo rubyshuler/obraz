@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  resources :shopping_carts
-  root to: 'items#index'
-  # root to: 'pages/index'
+
+  root 'pages#home'
+  get 'pages/home'
+
   devise_for :users
 
   resources :orders
+  resources :shopping_carts
 
   resources :messages
   resources :announcements

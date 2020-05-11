@@ -1,0 +1,36 @@
+= javascript_pack_tag 'design_packs'
+
+.l_event_banner
+  .banner_info
+    .star
+      h3 Маркет
+    h2 Ближайший маркет 26 января арт-пространстве №2
+  = image_tag(Item.last.images[0])
+
+div
+  .spacing-xl-h
+h1 Новая коллекция
+div
+  .spacing-m-h
+
+.l_item_cards
+  = render partial: 'items/item_card', collection: Item.all.limit(4), as: :item
+
+div
+  .spacing-xl-h
+h1 Новая коллекция
+div
+  .spacing-m-h
+
+.look_cards
+  = render partial: 'looks/look_card_l', collection: Look.all.limit(1), as: :look
+  = render partial: 'looks/look_card_r', collection: Look.all.limit(1), as: :look
+
+div
+  .spacing-xl-h
+h1 Золотая классика
+div
+  .spacing-m-h
+
+.s_item_cards
+  = render partial: 'items/item_card', collection: Item.all, as: :item

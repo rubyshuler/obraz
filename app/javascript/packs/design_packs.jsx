@@ -1,8 +1,8 @@
-// import React from 'react'
-// import ReactDOM from 'react-dom'
-// import PropTypes from 'prop-types'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types'
 //
-// import Items from '../containers/items'
+
 //
 // const ItemsPack = props => (
 //   <div>

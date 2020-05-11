@@ -1,0 +1,20 @@
+.look_card
+  .description
+    h2 #{look.name}
+    h2.gray1 #{look.price}
+    h4 #{look.description}
+    .colors
+      .color style='--color: #783BFF'
+      .color style='--color: #FF612F'
+      .color style='--color: #ffffff'
+    select.default_input
+      option S
+    .buttons
+      .l_button.primary Добавить в корзину
+      .l_icon_button.outline
+        .favorite_purple
+  div
+    .spacing-xl-w
+  = image_tag(look.images[0])
+div
+  .spacing-xxxl-h

@@ -1,6 +1,43 @@
-$purple: #783BFF;
+// Основные цвета
 $black: #252525;
-$black_font: #111;
-$white: #FFF;
-$yellow: #FFE600;
-$grey2: #A9ABBD;
+$white: #ffffff;
+$purple: #783bff;
+$yellow: #ffe500;
+$orange: #fab619;
+$red: #ed0000;
+
+.black { color: $black; }
+.white { color: $white; }
+.purple { color: $purple; }
+.yellow { color: $yellow; }
+.orange { color: $orange; }
+.red { color: $red; }
+
+// Оттенки основных цветов
+$dark_purple: #5014d6;
+$light_black: #333333;
+
+.dark_purple { color: $dark_purple; }
+.light_black { color: $light_black; }
+
+// Серые
+$gray1: #65676e;
+$gray2: #a9abbd;
+$gray3: #d6d7e1;
+$gray4: #e5e7ee;
+$gray5: #f2f4fa;
+
+.gray1 { color: $gray1; }
+.gray2 { color: $gray2; }
+.gray3 { color: $gray3; }
+.gray4 { color: $gray4; }
+.gray5 { color: $gray5; }
+
+// Подложки
+$light_purple: opacify(rgba($purple, 0), 0.12);
+$light_orange: opacify(rgba($orange, 0), 0.12);
+$light_red: opacify(rgba($red, 0), 0.12);
+
+.light_purple { color: $light_purple; }
+.light_orange { color: $light_orange; }
+.light_red { color: $light_red; }

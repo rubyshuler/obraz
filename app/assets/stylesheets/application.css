@@ -15,42 +15,8 @@
  *= colors
  */
 @import 'colors';
+@import "fonts";
 
-a:link {
-  text-decoration: none;
-  color: inherit;
-}
-
-a:visited {
-  text-decoration: none;
-  color: inherit;
-}
-
-a:hover {
-  cursor: pointer;
-  color: inherit;
-}
-
-.container {
-  width: 1120px;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-}
-
-footer {
-  position: relative;
-  bottom: 0;
-  margin-bottom: 32px;
-  width: inherit;
-}
-
-footer,
-.footer {
-  display: flex;
-  justify-content: space-between;
-}
-
-.footer p.small-p.grey {
-  margin-left: 64px;
+*, *::before, *::after {
+  box-sizing: border-box;
 }

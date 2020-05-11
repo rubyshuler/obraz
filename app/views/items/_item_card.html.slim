@@ -1,7 +1,15 @@
-= link_to item_path(item_card) do
-  .item_card
-    .cover
-      = image_tag(item_card.images[0])
-    .item_card_info
-      p = item_card.name
-      p.price_tag = item_card.price
+= link_to item_path(item), class: 'item_card' do
+  .cover
+    .l_badge.primary_badge.sq Осталось 2 штуки
+    = image_tag(item.images[0])
+    .l_button.primary_black.fixed Образы с этой вещью
+  .info
+    .title
+      h3 #{item.name}
+      p Волчок
+    div
+      .spacing-m-w
+    .l_badge.default_badge #{item.price} &#8381;
+
+  div
+    .spacing-m-h
