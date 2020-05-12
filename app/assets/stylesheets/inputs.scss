@@ -135,7 +135,7 @@
 }
 
 @mixin input_box_label {
-  position: absolute;
+  // position: absolute;
   @include p2;
   margin-left: 12px;
 
@@ -180,8 +180,10 @@
   }
 }
 
-// CHECK BOX
+// CHECKBOX
 .checkbox_content {
+  display: flex;
+  justify-content: center;
   .checkbox[type="checkbox"] {
     @include input_box;
     @include checkbox;

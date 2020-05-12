@@ -41,6 +41,8 @@ p { @include p; }
   line-height: 24px;
 }
 
+.p2 { @include p2; }
+
 @mixin p3 {
   font-size: 14px;
   line-height: 24px;
@@ -50,3 +52,5 @@ p { @include p; }
   font-size: 12px;
   line-height: 20px;
 }
+
+.p4 { @include p4; }

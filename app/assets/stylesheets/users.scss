@@ -1,0 +1,26 @@
+@mixin sign_form {
+  margin: 0 auto;
+  width: 400px;
+
+  > * {
+    width: 400px;
+    text-align: center;
+  }
+  form {
+    > * {
+      width: 400px;
+    }
+  }
+}
+
+// SIGN IN
+
+.sign_in_form {
+  @include sign_form;
+}
+
+// SIGN UP
+
+.sign_up_form {
+  @include sign_form;
+}

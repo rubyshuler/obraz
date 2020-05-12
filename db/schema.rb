@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_17_233212) do
+ActiveRecord::Schema.define(version: 2020_05_12_153126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,107 +36,138 @@ ActiveRecord::Schema.define(version: 2020_03_17_233212) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "announcements", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "customers", force: :cascade do |t|
-    t.json "address"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table "colors", force: :cascade do |t|
+    t.string "name"
+    t.string "color"
     t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "designers", force: :cascade do |t|
-    t.integer "role"
+    t.string "brand_name"
+    t.string "description"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.bigint "customer_id", null: false
+    t.bigint "user_id", null: false
     t.bigint "item_id", null: false
     t.bigint "look_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_favorites_on_customer_id"
     t.index ["item_id"], name: "index_favorites_on_item_id"
     t.index ["look_id"], name: "index_favorites_on_look_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "item_quantities", force: :cascade do |t|
+    t.bigint "size_id", null: false
+    t.bigint "color_id", null: false
+    t.bigint "item_id", null: false
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["color_id"], name: "index_item_quantities_on_color_id"
+    t.index ["item_id"], name: "index_item_quantities_on_item_id"
+    t.index ["size_id"], name: "index_item_quantities_on_size_id"
   end
 
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.integer "price"
     t.string "description"
+    t.string "details"
+    t.integer "designer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "designer_id"
-    t.integer "chosen_size"
-    t.integer "model_height"
-    t.integer "model_weight"
-    t.string "details", array: true
-    t.integer "amount"
-    t.integer "order_id"
+  end
+
+  create_table "items_looks", id: false, force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.bigint "look_id", null: false
+    t.index ["item_id", "look_id"], name: "index_items_looks_on_item_id_and_look_id"
+    t.index ["look_id", "item_id"], name: "index_items_looks_on_look_id_and_item_id"
   end
 
   create_table "looks", force: :cascade do |t|
     t.string "name"
-    t.integer "price"
     t.string "description"
+    t.string "details"
+    t.string "quote"
+    t.integer "stylist_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "designer_id"
   end
 
   create_table "messages", force: :cascade do |t|
     t.string "body"
-    t.bigint "user_id", null: false
-    t.bigint "order_id", null: false
+    t.integer "user_id"
+    t.integer "order_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_id"], name: "index_messages_on_order_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "status", default: "Новый"
+    t.json "address"
+    t.string "status"
+    t.integer "user_id"
+    t.integer "designer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "customer_id"
   end
 
   create_table "shopping_carts", force: :cascade do |t|
-    t.bigint "customer_id", null: false
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_shopping_carts_on_customer_id"
+  end
+
+  create_table "sizes", force: :cascade do |t|
+    t.string "size"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "stylists", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "table_item_orders", force: :cascade do |t|
+    t.integer "item_id"
+    t.integer "designer_id"
+    t.integer "shopping_cart_id"
+    t.integer "order_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.integer "role"
+    t.string "name"
+    t.string "surname"
+    t.string "role"
+    t.json "address"
+    t.integer "designer_id"
+    t.integer "stylist_id"
+    t.integer "shopping_cart_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "designer_id"
-    t.integer "customer_id"
-    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "favorites", "customers"
   add_foreign_key "favorites", "items"
   add_foreign_key "favorites", "looks"
-  add_foreign_key "messages", "orders"
-  add_foreign_key "messages", "users"
-  add_foreign_key "shopping_carts", "customers"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "item_quantities", "colors"
+  add_foreign_key "item_quantities", "items"
+  add_foreign_key "item_quantities", "sizes"
 end

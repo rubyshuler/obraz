@@ -1,24 +1,51 @@
-h2
-  | Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
-    br
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+.sign_up_form
+  div
+    .spacing-huge-h
+  h2 Регистрация
+  div
+    .spacing-xl-h
+
+  .p2
+    | Уже зарегистрированы? &#160;
+    = link_to 'Завести аккаунт', new_user_registration_path, class: 'purple'
+
+  div
+    .spacing-xl-h
+
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = f.email_field :email, autofocus: true, autocomplete: "email",
+        placeholder: 'Email', class: 'default_input'
+
+    div
+      .spacing-m-h
+
+    = f.password_field :password, autocomplete: "current-password",
+        placeholder: 'Пароль', class: 'default_input'
+
+    div
+      .spacing-m-h
+
+    = f.password_field :password_confirmation, autocomplete: "new-password",
+      placeholder: 'Подтвердите пароль', class: 'default_input'
+
+    div
+      .spacing-m-h
+
+    .checkbox_content
+      = f.check_box :role, {class: 'checkbox'}, checked_value = "дизайнер", unchecked_value = "покупатель"
+      = f.label :role, 'Я хочу продавать свои вещи в Obraz', class: 'checkbox'
+
+    div
+      .spacing-m-h
+
+    .designer_toggle data-props=''
+
+    = f.submit "Зарегистироваться в Obraz", class: 'l_button primary_black'
+
+    div
+      .spacing-m-h
+
+    .p4.gray1 Создавая личный кабинет, вы соглашаетесь с нашими Условиями использования & Политикой Конфиденциальности
+
+    div
+      .spacing-huge-h

@@ -9,9 +9,6 @@ Rails.application.routes.draw do
   resources :shopping_carts
 
   resources :messages
-  resources :announcements
-  resources :designers
-  resources :customers
 
   resources :looks do
     resource :favorite, only: [:create, :destroy]

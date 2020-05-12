@@ -12,10 +12,12 @@ html
     .menubar
       = link_to root_path do
         .logo
+
       .menu_items
         = link_to 'Луки', looks_path, class: 'menu_item'
         = link_to 'Вещи', items_path, class: 'menu_item'
         a.menu_item Мероприятия
+
       .menu_search
         input.search_input placeholder='Поиск'
         i.search

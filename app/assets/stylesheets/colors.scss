@@ -6,12 +6,12 @@ $yellow: #ffe500;
 $orange: #fab619;
 $red: #ed0000;
 
-.black { color: $black; }
-.white { color: $white; }
-.purple { color: $purple; }
-.yellow { color: $yellow; }
-.orange { color: $orange; }
-.red { color: $red; }
+.black { color: $black !important; }
+.white { color: $white !important; }
+.purple { color: $purple !important; }
+.yellow { color: $yellow !important; }
+.orange { color: $orange !important; }
+.red { color: $red !important; }
 
 // Оттенки основных цветов
 $dark_purple: #5014d6;

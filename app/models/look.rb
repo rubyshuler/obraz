@@ -1,8 +1,9 @@
 class Look < ApplicationRecord
-  has_many :favorites, dependent: :destroy
-  belongs_to :designer
-  has_many :items
+  belongs_to :stylist
 
+  has_many :favorites, dependent: :destroy
+
+  has_and_belongs_to_many :items
   has_many_attached :images
 
   def thumbnail(url)
