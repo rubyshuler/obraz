@@ -24,3 +24,11 @@
 .sign_up_form {
   @include sign_form;
 }
+
+// EDIT
+
+.profile_info {
+  .default_input {
+    width: 448px;
+  }
+}

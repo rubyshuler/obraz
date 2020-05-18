@@ -1,4 +1,4 @@
-= form_with(model: item, local: true) do |form|
+= form_with(model: item, local: true, html: {class: 'item_form'}) do |f|
   - if item.errors.any?
     #error_explanation
       h2
@@ -8,17 +8,62 @@
         - item.errors.full_messages.each do |message|
           li
             = message
-  .field
-    = form.label :name
-    = form.text_field :name
-  .field
-    = form.label :images
-    = form.file_field :images, multiple: true  
-  .field
-    = form.label :price
-    = form.number_field :price
-  .field
-    = form.label :description
-    = form.text_field :description
-  .actions
-    = form.submit
+
+  = f.text_field :name, autofocus: true,
+      placeholder: 'Название вещи', class: 'default_input'
+
+  div
+    .spacing-m-h
+
+  = f.text_area :description, placeholder: 'Описание',
+      class: 'default_input'
+
+  div
+    .spacing-m-h
+
+  = f.text_area :details, placeholder: 'Дополнительная информация (под фото)',
+      class: 'default_input'
+
+  div
+    .spacing-m-h
+
+  select.default_input placeholder='Доступные размеры'
+
+  div
+    .spacing-m-h
+
+  select.default_input placeholder='Цвета'
+
+  div
+    .spacing-m-h
+
+  = f.text_field :price, autofocus: true,
+      placeholder: 'Цена', class: 'default_input'
+
+
+  div
+    .spacing-m-h
+
+  .p3 Фотографии вещи
+
+  div
+    .spacing-m-h
+
+  .image_uploader
+    .icon
+      .uploader_icon
+
+    div
+      .spacing-s-h
+
+    .p4 Добавьте файлы или перетащите их сюда
+    = f.file_field :images, multiple: true, class: 'file_field'
+
+
+  div
+    .spacing-m-h
+
+  = f.submit "Добавить", class: 'l_button primary_black'
+
+  div
+    .spacing-huge-h

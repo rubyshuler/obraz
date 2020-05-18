@@ -33,6 +33,10 @@ class CreateModels < ActiveRecord::Migration[6.0]
       t.string :status
       t.integer :user_id
       t.integer :designer_id
+      t.integer :weight
+      t.string :tracking_number
+      t.date :shipped_at
+      t.date :delivered_at
 
       t.timestamps
     end

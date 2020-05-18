@@ -7,6 +7,10 @@ class Item < ApplicationRecord
   has_many :sizes, through: :item_quantities
   has_many :colors, through: :item_quantities
 
+  has_many :items_orders
+  has_many :orders, through: :items_orders
+  has_many :shopping_carts, through: :items_orders
+
   has_and_belongs_to_many :looks
 
   has_many_attached :images

@@ -102,6 +102,7 @@
 .s_icon_button {
   @include icon_button(32px);
 }
+
 // BADGES
 
 @mixin badge($padding-h, $padding-w) {
@@ -222,6 +223,11 @@
       padding-bottom: 8px;
       margin-bottom: -1px;
     }
+
+    &:hover {
+      color: $purple;
+      cursor: pointer;
+    }
   }
 }
 
@@ -229,7 +235,6 @@
 
 @mixin breadcrumbs($a_left, $span_right) {
   display: flex;
-  margin-top: 64px;
 
   a {
     margin-right: $a_left;

@@ -1,6 +1,18 @@
 require 'ffaker'
 require 'faker'
 
+2.times do
+  user = User.create(
+    email: Faker::Internet.email,
+    name: FFaker::NameRU.name,
+    role: 'покупатель',
+    password: 'testtest'
+  )
+
+  shopping_cart = ShoppingCart.create(user_id: user.id)
+
+  user.update(shopping_cart_id: shopping_cart.id)
+end
 
 5.times do |time|
   user = User.create(
@@ -49,7 +61,7 @@ end
   end
 end
 
-10.times do |time|
+5.times do |time|
   item_name = ['Латексные трусы', 'Платье из матрицы', 'Оранжевый хит сезона', 'Яркий лонгслив', 'Сумка наперевес' ]
   details = ['Круглый вырез', 'Длинные рукава', 'Лента с надписью «Вечеринка»', 'Облегающие манджеты и нижняя кромка', 'Размер соответствует указанному на этикетке']
 
@@ -58,7 +70,7 @@ end
     price: rand(800..7800),
     description: FFaker::LoremRU.sentences(sentence_count = 1),
     details: details.join(', '),
-    designer_id: Designer.last.id
+    designer_id: Designer.find(time + 1).id
   )
 
   int = rand(1..53)
@@ -114,11 +126,60 @@ end
   p "Looks created #{time}/5"
 end
 
-# 2.times do
-#   order = Order.create(
-#     status: :new_order,
-#     customer_id: Customer.last.id
-#   )
-#   order.items = Item.all.take(3)
-#   order.save!
-# end
+5.times do
+  designer = Designer.all.sample
+  user = User.customer.sample
+
+  order = Order.create(
+    address: { city: 'Москва', street: 'Мясницкая' },
+    status: 'Оплачен',
+    user_id: user.id,
+    designer_id: designer.id
+  )
+
+  item_order = ItemsOrder.create(
+    designer_id: designer.id,
+    item_id: designer.items.sample.id,
+    shopping_cart_id: user.shopping_cart.id,
+    order_id: order.id
+  )
+end
+
+
+2.times do
+  designer = Designer.first
+  user = User.customer.sample
+
+  order = Order.create(
+    address: { city: 'Москва', street: 'Мясницкая' },
+    status: 'Отправлен',
+    user_id: user.id,
+    designer_id: designer.id
+  )
+
+  item_order = ItemsOrder.create(
+    designer_id: designer.id,
+    item_id: designer.items.sample.id,
+    shopping_cart_id: user.shopping_cart.id,
+    order_id: order.id
+  )
+end
+
+3.times do
+  designer = Designer.first
+  user = User.customer.sample
+
+  order = Order.create(
+    address: { city: 'Москва', street: 'Мясницкая' },
+    status: 'Доставлен',
+    user_id: user.id,
+    designer_id: designer.id
+  )
+
+  item_order = ItemsOrder.create(
+    designer_id: designer.id,
+    item_id: designer.items.sample.id,
+    shopping_cart_id: user.shopping_cart.id,
+    order_id: order.id
+  )
+end

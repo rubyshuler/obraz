@@ -1,0 +1,25 @@
+div
+  .spacing-xxxl-h
+
+.designer_name
+  .logo_name
+    - if @designer.image.present?
+      = image_tag(@designer.image)
+      .spacing-m-w
+    h1
+      = @designer.brand_name
+
+  = link_to 'Редактировать', edit_designer_path(@designer), class: 'edit'
+
+div
+  .spacing-m-h
+
+p
+  = @designer.description
+
+div
+  .spacing-xxxl-h
+
+.nav_tab
+  .tab.active.p Товары
+  .tab.p Образы

@@ -27,3 +27,15 @@
 .m_look_cards {
   @include cards_flow(-16px, -32px);
 }
+
+// ITEM FORM
+
+.item_form {
+  width: 448px;
+
+  .default_input,
+  .image_uploader,
+  .l_button.primary_black {
+    width: 448px;
+  }
+}

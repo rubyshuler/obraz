@@ -1,4 +1,18 @@
-h1
-  | New Item
+.m_breadcrumbs
+  = link_to 'Главная', designer_path(current_user.designer)
+  span →
+  a Добавление вещи
+
+div
+  .spacing-xl-h
+
+.designer_name
+  .logo_name
+    h1 Добавление вещи
+
+  = link_to 'Отмена', designer_path(current_user.designer), class: 'edit'
+
+div
+  .spacing-xl-h
+
 = render 'form', item: @item
-= link_to 'Back', items_path

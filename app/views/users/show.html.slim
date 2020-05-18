@@ -1,0 +1,15 @@
+= javascript_pack_tag 'profile_pack'
+
+div
+  .spacing-xl-h
+
+.designer_name
+  .logo_name
+    h1 Профиль
+
+  = link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'edit'
+
+div
+  .spacing-m-h
+
+.profile_pack data-props=@profile_json

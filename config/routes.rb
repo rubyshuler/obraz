@@ -3,12 +3,16 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'pages/home'
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: "users/registrations"}
 
   resources :orders
   resources :shopping_carts
 
   resources :messages
+  resources :users
+  resources :designers do
+    get 'orders'
+  end
 
   resources :looks do
     resource :favorite, only: [:create, :destroy]
@@ -22,6 +26,4 @@ Rails.application.routes.draw do
   end
 
   resources :messages, only: [:create, :index, :destroy]
-
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

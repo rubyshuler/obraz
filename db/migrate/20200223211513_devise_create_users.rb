@@ -13,7 +13,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.integer :designer_id
       t.integer :stylist_id
       t.integer :shopping_cart_id
-
+      t.date :birthdate
+      
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at

@@ -1,0 +1,19 @@
+.menu_items
+  = link_to 'Луки', looks_path, class: 'menu_item'
+  = link_to 'Вещи', items_path, class: 'menu_item'
+  a.menu_item Мероприятия
+
+.menu_search
+  input.search_input placeholder='Поиск'
+  i.search
+
+.menu_icons
+  .menu_icon.favorite
+  - if user_signed_in?
+    = link_to '', user_path(current_user), class: 'menu_icon shopping_basket'
+  - else
+    = link_to '', new_user_session_path, class: 'menu_icon shopping_basket'
+  - if user_signed_in?
+    = link_to '', user_path(current_user), class: 'menu_icon signed'
+  - else
+    = link_to '', new_user_session_path, class: 'menu_icon sign'

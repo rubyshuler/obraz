@@ -16,6 +16,13 @@
   padding: 0 $padding-w;
 }
 
+@mixin search_input {
+  height: 32px;
+  background-color: $white;
+  border-radius: 16px;
+  @include p4;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -36,16 +43,20 @@ body {
     .menu_search {
       .search_input {
         @include default_input(6px, 328px, 12px, 556px);
-        height: 32px;
-        background-color: $white;
-        border-radius: 16px;
-        @include p4;
+        @include search_input;
       }
       .search {
         position: absolute;
         margin: 4px 0 4px -32px;
       }
+      &.designer{
+        .search_input {
+          @include default_input(6px, 328px, 12px, 390px);
+          @include search_input;
+        }
+      }
     }
+
 
     .menu_items {
       .menu_item {

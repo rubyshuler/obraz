@@ -1,0 +1,40 @@
+.sign_up_form
+  div
+    .spacing-huge-h
+  h2 Создание бренда
+
+  div
+    .spacing-xl-h
+
+  = form_with(model: @designer, local: true) do |f|
+    = f.text_field :brand_name, autofocus: true,
+        placeholder: 'Название', class: 'default_input'
+
+    div
+      .spacing-m-h
+
+    = f.text_area :description, placeholder: 'Описание',
+        class: 'default_input'
+
+    div
+      .spacing-m-h
+
+    .image_uploader
+      .icon
+        .uploader_icon
+
+      div
+        .spacing-s-h
+
+      .p4 Добавьте логотип своего бренда
+      = f.file_field :image, class: 'file_field'
+
+    div
+      .spacing-m-h
+
+    .designer_toggle data-props=''
+
+    = f.submit "Создать свой бренд в Obraz", class: 'l_button primary_black'
+
+    div
+      .spacing-huge-h

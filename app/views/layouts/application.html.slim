@@ -5,31 +5,17 @@ html
       | Obraz
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_pack_tag 'application'
 
   body
     .menubar
       = link_to root_path do
         .logo
-
-      .menu_items
-        = link_to 'Луки', looks_path, class: 'menu_item'
-        = link_to 'Вещи', items_path, class: 'menu_item'
-        a.menu_item Мероприятия
-
-      .menu_search
-        input.search_input placeholder='Поиск'
-        i.search
-
-      .menu_icons
-        .menu_icon.favorite
-        = link_to orders_path, class: 'menu_icon' do
-          .shopping_basket
-        - if user_signed_in?
-          = link_to '', orders_path, class: 'menu_icon signed'
+        - if !user_signed_in? || current_user.customer?
+          = render partial: 'layouts/customer_menubar'
         - else
-          = link_to '', new_user_session_path, class: 'menu_icon sign'
+          = render partial: 'layouts/designer_menubar'
 
     .container
       = yield

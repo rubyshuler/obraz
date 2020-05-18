@@ -206,3 +206,38 @@
 }
 
 // TOGGLE
+
+// IMAGE UPLOADER
+
+.image_uploader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 352px;
+  height: 124px;
+  border-radius: 8px;
+  border: 1px dashed $gray2;
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background-color: $gray5;
+    border-radius: 50%;
+  }
+
+  input {
+    text-align: center;
+  }
+
+  .file_field {
+    position: absolute;
+    cursor: pointer;
+    width: inherit;
+    height: inherit;
+    opacity: 0;
+  }
+}

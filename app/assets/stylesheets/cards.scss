@@ -23,6 +23,8 @@
   @include color;
 }
 
+// H1 + link -- changed class names
+
 .designer_name {
   display: flex;
   justify-content: space-between;
@@ -30,16 +32,13 @@
   .logo_name {
     display: flex;
 
-    .logo {
-      img {
-        @include images(56px, 56px);
-        border-radius: 50%;
-      }
+    img {
+      @include images(56px, 56px);
+      border-radius: 50%;
     }
 
     h1 {
       width: 742px;
-      margin-left: 20px;
     }
   }
 
@@ -141,6 +140,10 @@
   .item_card {
     @include card(256px, 240px, 208px);
   }
+  .l_button.primary_black,
+  .l_badge.primary_badge.sq {
+    display: none;
+  }
 }
 
 .item_h_card {
@@ -189,12 +192,21 @@
 
 @mixin order {
   border: 1px solid $gray3;
+  margin-bottom: 32px;
   border-radius: 4px;
   padding: 32px;
+
   .order_title {
     display: flex;
     padding-bottom: 16px;
+    h3 {
+      color: $gray1;
+      span {
+        color: $black;
+      }
+    }
   }
+
   .order_description {
     padding: 20px 0;
   }
@@ -214,34 +226,9 @@
   }
 }
 
-// .orders
-//   .order
-//     .order_title
-//       h3
-//         | Заказ №38435678924,
-//         span 22 400₽
-//       div
-//         .spacing-xs-w
-//       .m_badge.status_badge
-//         span
-//         | Оплачен
-//     .order_description
-//       p Поступил: 2 мая 11:20
-//       p Доставка: Россия, Московская область, Раменский р-он, р.п. Быково, пер. Щорса 2А
-//     .hr
-//     .order_images
-//       = image_tag(Item.last.images[0])
-//       div
-//         .spacing-m-w
-//       = image_tag(Item.last.images[0])
-//       div
-//         .spacing-m-w
-//       = image_tag(Item.last.images[0])
-
 .order {
   @include order;
 }
-
 
 // BANNERS
 

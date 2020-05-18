@@ -15,5 +15,6 @@ class User < ApplicationRecord
   has_one :shopping_cart
   has_many :messages, dependent: :destroy
   has_many :favorites
+  has_many :orders
   has_one_attached :image
 end

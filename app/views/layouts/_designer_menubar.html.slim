@@ -1,0 +1,24 @@
+.menu_items
+  - if current_user.designer.present?
+    = link_to current_user.designer.brand_name, designer_path(current_user.designer), class: 'menu_item'
+    = link_to 'Заказы', designer_orders_path(current_user.designer), class: 'menu_item'
+  - else
+    = link_to 'Заказы', new_designer_path, class: 'menu_item'
+
+  a.menu_item Статистика
+
+.menu_search.designer
+  input.search_input placeholder='Поиск'
+  i.search
+
+.menu_icons
+  .menu_items
+    = link_to 'Луки', looks_path, class: 'menu_item'
+    = link_to 'Вещи', items_path, class: 'menu_item'
+
+  .menu_icon.favorite
+  = link_to '', user_path(current_user), class: 'menu_icon shopping_basket'
+  - if user_signed_in?
+    = link_to '', user_path(current_user), class: 'menu_icon signed'
+  - else
+    = link_to '', new_user_session_path, class: 'menu_icon sign'
