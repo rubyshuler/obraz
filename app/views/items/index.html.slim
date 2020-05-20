@@ -1,3 +1,31 @@
-// section.items data-props=@items_cards
-.item_cards
-  = render partial: 'item_card', collection: @items_cards, as: :item_card
+div
+  .spacing-l-h
+
+.m_breadcrumbs
+  = link_to 'Главная', root_path
+  span →
+  = link_to 'Образы', looks_path
+
+div
+  .spacing-xl-h
+
+h1 Вещи из этого лука
+
+div
+  .spacing-m-h
+
+.filters
+  select.default_input disabled=''
+    option Размер
+
+  select.default_input disabled=''
+    option Коллекция
+
+  select.default_input disabled=''
+    option Цена
+
+div
+  .spacing-xl-h
+
+.s_item_cards
+  = render partial: 'item_card', collection: @items_cards, as: :item

@@ -1,29 +1,21 @@
 class LooksController < ApplicationController
   before_action :set_look, only: [:show, :edit, :update, :destroy]
 
-  # GET /looks
-  # GET /looks.json
   def index
     @looks = Look.all
   end
 
-  # GET /looks/1
-  # GET /looks/1.json
   def show
     @items_cards = Item.all.take(5)
   end
 
-  # GET /looks/new
   def new
     @look = Look.new
   end
 
-  # GET /looks/1/edit
   def edit
   end
 
-  # POST /looks
-  # POST /looks.json
   def create
     @look = Look.new(look_params)
 
@@ -38,8 +30,6 @@ class LooksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /looks/1
-  # PATCH/PUT /looks/1.json
   def update
     respond_to do |format|
       if @look.update(look_params)
@@ -52,8 +42,6 @@ class LooksController < ApplicationController
     end
   end
 
-  # DELETE /looks/1
-  # DELETE /looks/1.json
   def destroy
     @look.destroy
     respond_to do |format|
@@ -63,12 +51,11 @@ class LooksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_look
       @look = Look.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def look_params
       params.require(:look).permit(:name, :price, :description, :designer_id, images: [])
     end

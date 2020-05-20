@@ -46,3 +46,13 @@
     @include star(188px);
   }
 }
+
+// INDEX PAGE
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  .default_input {
+    width: 352px;
+  }
+}

@@ -1,2 +1,31 @@
-.look_cards
+div
+  .spacing-l-h
+
+.m_breadcrumbs
+  = link_to 'Главная', root_path
+  span →
+  = link_to 'Образы', looks_path
+
+div
+  .spacing-xl-h
+
+h1 Вещи из этого лука
+
+div
+  .spacing-m-h
+
+.filters
+  select.default_input disabled=''
+    option Размер
+
+  select.default_input disabled=''
+    option Коллекция
+
+  select.default_input disabled=''
+    option Цена
+
+div
+  .spacing-xl-h
+
+.m_look_cards
   = render partial: 'look_card', collection: @looks, as: :look
