@@ -17,7 +17,7 @@
     = link_to 'Вещи', items_path, class: 'menu_item'
 
   .menu_icon.favorite
-  = link_to '', user_path(current_user), class: 'menu_icon shopping_basket'
+  = link_to '', shopping_cart_path(current_user.shopping_cart), class: 'menu_icon shopping_basket'
   - if user_signed_in?
     = link_to '', user_path(current_user), class: 'menu_icon signed'
   - else

@@ -48,13 +48,15 @@
       background-color: transparent;
     }
   }
-  &textarea {
-    min-height: 108px;
-  }
   &[type="number"]::-webkit-inner-spin-button,
   &[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+  }
+  &select {
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
@@ -167,6 +169,12 @@
 }
 
 // SELECT
+
+// textarea
+
+textarea {
+  min-height: 108px;
+}
 
 // SEARCH
 

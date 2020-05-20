@@ -1,6 +1,49 @@
-p#notice = notice
+div
+  .spacing-xl-h
+h1 Корзина
+div
+  .spacing-xl-h
 
+= render 'shopping_cart_card'
 
-=> link_to 'Edit', edit_shopping_cart_path(@shopping_cart)
-'|
-=< link_to 'Back', shopping_carts_path
+div
+  .spacing-s-h
+h2.right Итого 54 200 ₽
+div
+  .spacing-xl-h
+
+= form_with model: Order.new, html: { class: 'order_form' } do |form|
+  h2
+    | Доставка &#160;
+    span.gray2
+      | (бесплатно)
+
+  div
+    .spacing-m-h
+
+  select.default_input disabled=''
+    option Почта России
+
+  div
+    .spacing-m-h
+
+  = form.text_area :address, class: 'default_input'
+
+  div
+    .spacing-xxxl-h
+
+  h2 Оплата
+
+  div
+    .spacing-m-h
+
+  select.default_input disabled=''
+    option Наложенный платеж
+
+  div
+    .spacing-xxxl-h
+
+  = form.submit 'Оформить заказ', class: 'l_button primary_black'
+
+  div
+  .spacing-huge-h

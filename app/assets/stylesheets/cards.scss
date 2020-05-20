@@ -268,3 +268,36 @@
 .s_event_banner {
   @include banner(304px, 348px, 188px, 48px);
 }
+
+
+// Shopping Cart + Order Card
+
+@mixin shopping_cart_card {
+  position: relative;
+  display: flex;
+  width: 1024px;
+
+  img {
+    @include images(256px, 260px);
+  }
+  .info {
+    width: 638px;
+
+    .l_icon_button {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .options {
+      display: flex;
+      .default_input {
+        width: 200px;
+      }
+    }
+  }
+}
+
+.shopping_cart_card {
+  @include shopping_cart_card;
+}
