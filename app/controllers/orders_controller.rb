@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order_json = OrderSerializer.new(@order).to_json
   end
 
   def new
@@ -22,6 +23,7 @@ class OrdersController < ApplicationController
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -34,6 +36,7 @@ class OrdersController < ApplicationController
       if @order.update(order_params)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -57,6 +60,11 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.fetch(:order, {})
+      params.require(:order).permit(
+        :weight,
+        :shipped_at,
+        :tracking_number,
+        :delivered_at
+      )
     end
 end

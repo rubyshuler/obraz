@@ -1,6 +1,6 @@
 class OrderSerializer < ActiveModel::Serializer
   attributes :id, :status, :order_price, :order_created_at, :designer_id, :delivered_at,
-  :tracking_number, :shipped_at, :address
+  :tracking_number, :shipped_at, :address, :weight
 
   # belongs_to :designer, serializer: DesignerSerializer
   has_many :items, serializer: ItemsSerializer

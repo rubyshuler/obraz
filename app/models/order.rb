@@ -7,8 +7,7 @@ class Order < ApplicationRecord
     canceled: 'Отменен'
   }
 
-  has_one :designer
-  accepts_nested_attributes_for :designer
+  belongs_to :designer
 
   has_many :items_orders
   has_many :items, through: :items_orders

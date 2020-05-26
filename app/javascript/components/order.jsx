@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 function OrderList(props) {
   const {orders} = props;
-  console.log(orders);
+
   const ordersList = orders.map((order, index) => (
-		<div key={index} className='order'>
+		<a href={"../../orders/" + order.id} key={index} className='order'>
       <div className='l_button primary'>Обработать заказ</div>
       <div className='order_title'>
         <h3>
@@ -36,7 +36,7 @@ function OrderList(props) {
         })}
         <div><div className='spacing-m-w'></div></div>
       </div>
-		</div>
+		</a>
 	))
 
   return (

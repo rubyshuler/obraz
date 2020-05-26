@@ -1,0 +1,25 @@
+.m_breadcrumbs
+  a Заказы
+  span →
+  a Завершенные
+  span →
+  a Заказ №#{@order.id}
+
+- if current_user&.designer&.id == @order.designer_id
+  .order_refinement_pack data-props=@order_json
+
+  div
+    .spacing-xxxl-h
+
+  h2
+
+  div
+    .spacing-xl-h
+
+  = render 'shopping_carts/shopping_cart_card'
+
+  div
+    .spacing-s-h
+  h2.right Итого 54 200 ₽
+  div
+    .spacing-huge-h
