@@ -1,11 +1,9 @@
 = link_to look_path(look), class: 'look_card_sq' do
   .cover
     = image_tag(look.images[0])
-    // .l_button.primary_black.fixed Образы с этой вещью
   .info
     .title
       h3 #{look.name}
-      p Волчок
     div
       .spacing-m-w
     .l_badge.default_badge #{object_price(look)} &#8381;
