@@ -1,11 +1,13 @@
 class DesignersController < ApplicationController
   before_action :set_designer, only: [:show, :edit, :update]
 
-  def show; end
+  def show
+    @designer_profile_json = DesignerSerializer.new(@designer).to_json
+  end
 
   def orders
     @designer = current_user.designer
-    @designer_json = DesignerSerializer.new(@designer).to_json
+    @orders_json = DesignerSerializer.new(@designer).to_json
   end
 
   def new
