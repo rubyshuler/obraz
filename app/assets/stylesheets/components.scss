@@ -80,6 +80,10 @@
   @include button_colors(none, $purple, $light_purple);
 }
 
+.actions {
+  display: flex;
+}
+
 // ICON BUTTONS
 
 @mixin icon_button($size) {
@@ -109,7 +113,7 @@
 // BADGES
 
 @mixin badge($padding-h, $padding-w) {
-  display: block;
+  display: inline-block;
   padding: $padding-h $padding-w;
   border-radius: 40px;
   width: -webkit-fit-content;
@@ -144,15 +148,6 @@
 
 .status_badge {
   @include button_colors($light_orange, $black, $light_orange);
-
-  span {
-    display: inline-block;
-    background-color: $orange;
-    width: 8px;
-    height: 8px;
-    margin-right: 8px;
-    border-radius: 50%;
-  }
 }
 
 // FILTERS

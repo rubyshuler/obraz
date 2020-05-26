@@ -101,13 +101,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 12px;
 
     .title {
       display: flex;
       flex-direction: column;
       @include p2;
       h3 {
-        margin-top: 12px;
         display: flex;
         width: 427
       }
@@ -228,6 +228,7 @@
 
 .order {
   @include order;
+  display: block;
 }
 
 // BANNERS

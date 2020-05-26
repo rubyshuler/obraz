@@ -40,12 +40,27 @@
     border: 1px solid $purple;
   }
   &:invalid {
-    background-color: $light_red;
-    border: 1px solid #ffe5e3;
+    // background-color: $light_red;
+    border: 1px solid $red;
     &:focus,
     &:active {
       border: 1px solid $red;
       background-color: transparent;
+    }
+    &::-webkit-input-placeholder {
+      color: $red;
+    }
+    &::-moz-placeholder {
+      color: $red;
+    }
+    &:-ms-input-placeholder {
+      color: $red;
+    }
+    &::-ms-input-placeholder {
+      color: $red;
+    }
+    &::placeholder {
+      color: $red;
     }
   }
   &[type="number"]::-webkit-inner-spin-button,
@@ -160,6 +175,67 @@
 
 .default_input {
   @include default_input(16px, 92px, 20px, 528px);
+}
+
+// DEFAULT INPUT
+
+.label_default_input {
+  position: relative;
+
+  label {
+    position: absolute;
+    top: 21px;
+    left: 21px;
+    transition: top 0.3s ease-in-out, opacity 0.1s ease-in-out;
+    opacity: 0;
+    background-color: $white;
+    padding: 8px;
+    font-size: 0px;
+    z-index: 0;
+  }
+
+  .default_input:invalid + label {
+    color: $red;
+  }
+
+  .default_input:valid + label,
+  .default_input:focus + label {
+    @include p4;
+    opacity: 1;
+    color: $black;
+    top: -18px;
+    box-sizing: border-box;
+    z-index: 500;
+  }
+
+  .default_input:valid + label {
+    color: $gray2;
+  }
+
+  .default_input:valid::-webkit-input-placeholder,
+  .default_input:focus::-webkit-input-placeholder {
+    opacity: 0;
+  }
+
+  .default_input:focus::-moz-placeholder {
+    opacity: 0;
+  }
+
+  .default_input:focus:-ms-input-placeholder {
+    opacity: 0;
+  }
+
+  .default_input:focus::-ms-input-placeholder {
+    opacity: 0;
+  }
+
+  .default_input:focus::-webkit-input-placeholder {
+    opacity: 0;
+  }
+
+  .default_input:focus::placeholder {
+    opacity: 0;
+  }
 }
 
 // COUNT
