@@ -7,7 +7,9 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 
-// require("design_packs")
+require("packs/order_pack")
+require("packs/designer_pack")
+require("packs/profile_pack")
 
 
 
