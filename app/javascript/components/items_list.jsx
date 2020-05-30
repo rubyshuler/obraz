@@ -2,9 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function ItemsList(props) {
-  const {items} = props;
+	const {
+		items
+	} = props;
 
-  const itemsList = items.map((item, index) => (
+	const itemsList = items.map((item, index) => (
 		<a href={"../../items/" + item.id} key={index} className='item_card'>
       <div className='cover'>
         <div className='l_badge primary_badge sq'></div>
@@ -18,17 +20,17 @@ function ItemsList(props) {
           <p>{item.brand_name}</p>
         </div>
         <div><div className='spacing-m-w'></div></div>
-        <div className='l_badge default_badge'>{item.price}&#8381;</div>
+        <div className='l_badge default_badge'>{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}&#8381;</div>
       </div>
       <div><div className='spacing-xl-h'></div></div>
 		</a>
 	))
 
-  return (
-    <div className='s_item_cards'>
+	return (
+		<div className='s_item_cards'>
       {itemsList}
     </div>
-  );
+	);
 }
 
 export default ItemsList;

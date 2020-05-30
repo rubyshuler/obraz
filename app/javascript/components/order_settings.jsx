@@ -3,39 +3,41 @@ import PropTypes from "prop-types"
 import $ from 'jquery'
 
 export default class OrderSettings extends React.Component {
-  constructor(props) {
-    super(props)
+	constructor(props) {
+		super(props)
 
-    this.handleWeight = this.handleWeight.bind(this)
-    this.handleShippedAt = this.handleShippedAt.bind(this)
-    this.handleTrackingNumber = this.handleTrackingNumber.bind(this)
-    this.handleDeliveredAt = this.handleDeliveredAt.bind(this)
-  }
+		this.handleWeight = this.handleWeight.bind(this)
+		this.handleShippedAt = this.handleShippedAt.bind(this)
+		this.handleTrackingNumber = this.handleTrackingNumber.bind(this)
+		this.handleDeliveredAt = this.handleDeliveredAt.bind(this)
+	}
 
-  handleWeight(e) {
-    this.props.handleWeight(e.target.value)
-  }
+	handleWeight(e) {
+		this.props.handleWeight(e.target.value)
+	}
 
-  handleShippedAt(e) {
-    this.props.handleShippedAt(e.target.value)
-  }
+	handleShippedAt(e) {
+		this.props.handleShippedAt(e.target.value)
+	}
 
-  handleTrackingNumber(e) {
-    this.props.handleTrackingNumber(e.target.value)
-  }
+	handleTrackingNumber(e) {
+		this.props.handleTrackingNumber(e.target.value)
+	}
 
-  handleDeliveredAt(e) {
-    this.props.handleDeliveredAt(e.target.value)
-  }
+	handleDeliveredAt(e) {
+		this.props.handleDeliveredAt(e.target.value)
+	}
 
-  render () {
-    const {order} = this.props;
+	render() {
+		const {
+			order
+		} = this.props;
 
-    return (
-      <div className='refinement'>
+		return (
+			<div className='refinement'>
         <textarea
           className='default_input'
-          value={order.address.city + ', ' + order.address.street}
+          value={order.address}
           disabled
         />
 
@@ -75,6 +77,6 @@ export default class OrderSettings extends React.Component {
           onChange={ this.handleDeliveredAt }
           />
       </div>
-    )
-  }
+		)
+	}
 }

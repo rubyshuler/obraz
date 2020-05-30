@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'pages#home'
   get 'pages/home'
+  get 'orders/order_added', to: "orders#order_added"
 
   devise_for :users, controllers: { registrations: "users/registrations"}
 

@@ -1,7 +1,13 @@
+@import 'colors';
+
 // ORDER CARD
 
 .order {
   position: relative;
+
+  &:active {
+    color: $black;
+  }
 
   .l_button.primary {
     position: absolute;

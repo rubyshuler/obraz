@@ -19,7 +19,7 @@
 }
 
 @mixin border_button($color, $hover_color) {
-  color: $color;
+  color: $color!important;
   border: 1px solid $color;
   @include button_disabled;
 
@@ -51,17 +51,17 @@
 
 .l_button {
   @include button(16px, 16px);
-  @include button_font(18px, 24px);
+  @include l_button_font;
 }
 
 .m_button {
   @include button(8px, 12px);
-  @include button_font(16px, 28px);
+  @include m_button_font;
 }
 
 .s_button {
   @include button(8px, 12px);
-  @include button_font(14px, 20px);
+  @include s_button_font;
 }
 
 .primary {
@@ -186,17 +186,17 @@
 }
 
 .l_filter {
-  @include button_font(18px, 24px);
+  @include l_button_font;
   @include filter(16px, 36px);
 }
 
 .m_filter {
-  @include button_font(18px, 24px);
+  @include m_button_font;
   @include filter(10px, 24px);
 }
 
 .s_filter {
-  @include button_font(14px, 20px);
+  @include s_button_font;
   @include filter(6px, 16px);
 }
 

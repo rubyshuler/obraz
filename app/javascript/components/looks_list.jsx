@@ -17,7 +17,7 @@ function LooksList(props) {
           <h3>{look.name}</h3>
         </div>
         <div><div className='spacing-m-w'></div></div>
-        <div className='l_badge default_badge'>{look.look_price} &#8381;</div>
+        <div className='l_badge default_badge'>{look.look_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} &#8381;</div>
       </div>
       <div><div className='spacing-xl-h'></div></div>
 		</a>

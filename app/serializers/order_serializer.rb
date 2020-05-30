@@ -1,17 +1,12 @@
 class OrderSerializer < ActiveModel::Serializer
-  attributes :id, :status, :order_price, :order_created_at, :designer_id, :delivered_at,
-  :tracking_number, :shipped_at, :address, :weight
+  attributes :id, :status, :order_price, :order_created_at,
+  :designer_id, :delivered_at, :tracking_number, :shipped_at,
+  :address, :weight
 
-  # belongs_to :designer, serializer: DesignerSerializer
   has_many :items, serializer: ItemsSerializer
 
   def order_created_at
     object.created_at.strftime('%d %B %Y %H:%M')
-  end
-
-  def user_address
-    address = object.address
-    "#{address[:city]}, #{address[:street]}"
   end
 
   def order_price

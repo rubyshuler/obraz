@@ -28,14 +28,10 @@ div
     h2.gray1 #{@item.price} &#8381;
     h4 #{@item.description}
     .colors
-      .color style='--color: #783BFF'
-      .color style='--color: #FF612F'
-      .color style='--color: #ffffff'
-    select.default_input
-      option S
-    .buttons
-      .l_button.primary Добавить в корзину
-      .l_icon_button.outline.favorite_purple
+      - @item.colors.each do |color|
+        .color style="--color: #{color.color}"
+
+    .items_action_pack data-props=@item_action
 
 div
   .spacing-xl-h

@@ -1,24 +1,30 @@
 .shopping_cart_card
-  = image_tag(Item.first.images[0])
+  = image_tag(item.images[0])
   div
     .spacing-xl-w
   .info
-    .l_icon_button.primary_black.clear
-    h2 Черный плащ
+    - if item.shopping_carts.any? { |cart| cart.id == current_user.shopping_cart.id }
+      = link_to '',
+        shopping_cart_path(@shopping_cart, current_item_id: item.id),
+        method: :delete,
+        class: 'l_icon_button primary_black clear'
+    h2
+      = item.name
     div
       .spacing-m-h
-    h2.gray1 10 250 ₽
+    h2.gray1 #{ number_with_delimiter(item.price, delimiter: " ") } ₽
     div
       .spacing-m-h
-    h4 Вдохновлен андеграундными вечеринками и техно-пати Берлина, приплавлен треками из Мутабора и нотой свободы
+    h4
+      = item.description
     div
       .spacing-m-h
     .options
-      select.default_input
-        option S
+      select.default_input disabled=''
+        option #{ chosen_size(item) }
       div
         .spacing-m-w
-      select.default_input
+      select.default_input disabled=''
         option 1
 
 div

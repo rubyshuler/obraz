@@ -1,0 +1,8 @@
+.order_added
+  h1 Заказ оформлен!
+  div
+    .spacing-xxl-h
+  = button_to 'Смотреть вещи дальше', items_path, class: 'l_button primary_black'
+  div
+    .spacing-xs-h
+  = button_to 'Статус заказа', user_path(current_user), class: 'l_button flat'

@@ -15,6 +15,11 @@ h4, p, .p2, .p3, .p4 {
   font-weight: 400;
 }
 
+@mixin font_settings($size, $height) {
+  font-size: $size;
+  line-height: $height;
+}
+
 @mixin h1 {
   font-size: 48px;
   line-height: 56px;
@@ -71,3 +76,9 @@ p { @include p; }
 }
 
 .p4 { @include p4; }
+
+// Buttons
+
+@mixin l_button_font { @include font_settings(18px, 24px) }
+@mixin m_button_font { @include font_settings(16px, 28px) }
+@mixin s_button_font { @include font_settings(14px, 20px) }

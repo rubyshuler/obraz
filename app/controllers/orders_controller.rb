@@ -17,17 +17,32 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    @shopping_cart = current_user.shopping_cart
+    @items_orders = ItemsOrder.where(shopping_cart: @shopping_cart)
+    @items = @shopping_cart.items
+    @designers = @items_orders.map(&:designer)
+
+    @designers.each do |designer|
+      order = Order.new(order_params)
+      order.user_id = current_user.id
+      order.designer = designer
+      order.status = 'paid'
+      order.save
+      designer_item_orders = @items_orders.where(designer_id: designer.id)
+      order.items_orders << designer_item_orders
+      designer_item_orders.each do |items_order|
+        items_order.update(
+          order_id: order.id,
+          shopping_cart: nil
+        )
+      end
+    end
+
+    @shopping_cart.items_orders = []
 
     respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
-        format.js
-      else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to orders_order_added_path }
+      format.js
     end
   end
 
@@ -52,6 +67,8 @@ class OrdersController < ApplicationController
     end
   end
 
+  def order_added; end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
@@ -64,7 +81,8 @@ class OrdersController < ApplicationController
         :weight,
         :shipped_at,
         :tracking_number,
-        :delivered_at
+        :delivered_at,
+        :address
       )
     end
 end

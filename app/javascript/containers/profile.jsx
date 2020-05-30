@@ -103,12 +103,15 @@ export default class Profile extends React.Component {
 			<div>
         <Tabs selectedTabClassName='active'>
           <TabList className='nav_tab'>
+						<Tab className='tab'>Заказы</Tab>
             <Tab className='tab'>Личная информация</Tab>
-            <Tab className='tab'>Заказы</Tab>
             <Tab className='tab'>Данные для входа</Tab>
           </TabList>
 
           <div><div className='spacing-xl-h'></div></div>
+					<TabPanel>
+						<OrderList orders={orders} />
+					</TabPanel>
 
           <TabPanel>
             <UserInfo
@@ -125,10 +128,6 @@ export default class Profile extends React.Component {
               >
               Сохранить
             </button>
-          </TabPanel>
-
-          <TabPanel>
-            <OrderList orders={orders} />
           </TabPanel>
 
           <TabPanel>

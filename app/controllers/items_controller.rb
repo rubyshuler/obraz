@@ -7,6 +7,13 @@ class ItemsController < ApplicationController
 
   def show
     @items_cards = Item.all.with_attached_images
+    @item_action = { item: @item.as_json.merge(first_image), sizes: @item.sizes.as_json}.to_json
+  end
+
+  def first_image
+    {
+      first_image: url_for(@item.images[0])
+    }
   end
 
   def new
@@ -52,13 +59,21 @@ class ItemsController < ApplicationController
   end
 
   def add_to_order
-    @item.amount -= 1
-    @order_item = @item.clone
-    @order_item.update(chosen_size: params[:chosen_size])
-    @order = Order.create!(customer_id: current_user.customer_id)
-    @order_item.order_id = @order.id
-    @order_item.save!
-    redirect_to orders_path
+    choosen_item = ItemQuantity.where(
+      item_id: @item.id,
+      size_id: item_params[:chosen_size].to_i
+    ).first
+
+    choosen_item.update(
+      quantity: (choosen_item.quantity - 1)
+    )
+
+    ItemsOrder.create(
+      item_id: @item.id,
+      designer_id: @item.designer.id,
+      shopping_cart_id: current_user.shopping_cart.id,
+      chosen_size: item_params[:chosen_size]
+    )
   end
 
   private

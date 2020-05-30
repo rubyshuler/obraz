@@ -3,7 +3,7 @@
     .star
       h3 Маркет
     h2 Ближайший маркет 26 января арт-пространстве №2
-  = image_tag(Item.first.images[0])
+  = image_tag(Item.all.sample.images[0])
 
 div
   .spacing-xl-h
@@ -21,8 +21,8 @@ div
   .spacing-m-h
 
 .look_cards
-  = render partial: 'looks/look_card_l', collection: Look.all.limit(1), as: :look
-  = render partial: 'looks/look_card_r', collection: Look.all.limit(1), as: :look
+  = render 'looks/look_card_l', look: Look.first
+  = render 'looks/look_card_r', look: Look.last
 
 div
   .spacing-xl-h

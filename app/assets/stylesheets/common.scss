@@ -49,7 +49,7 @@ body {
         position: absolute;
         margin: 4px 0 4px -32px;
       }
-      &.designer{
+      &.designer {
         .search_input {
           @include default_input(6px, 328px, 12px, 390px);
           @include search_input;
@@ -57,10 +57,12 @@ body {
       }
     }
 
-
     .menu_items {
       .menu_item {
         margin-left: 16px;
+      }
+      .menu_item:visited {
+        color: $white;
       }
     }
 
@@ -78,6 +80,7 @@ body {
   }
 
   .container {
+    position: relative;
     width: 1120px;
     margin: auto;
     display: flex;

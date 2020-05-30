@@ -8,18 +8,19 @@
 - if current_user&.designer&.id == @order.designer_id
   .order_refinement_pack data-props=@order_json
 
-  div
-    .spacing-xxxl-h
+div
+  .spacing-xxxl-h
 
-  h2
+h2
 
-  div
-    .spacing-xl-h
+div
+  .spacing-xl-h
 
-  = render 'shopping_carts/shopping_cart_card'
+= render partial: 'shopping_carts/shopping_cart_card',
+  collection: @order.items, as: :item
 
-  div
-    .spacing-s-h
-  h2.right Итого 54 200 ₽
-  div
-    .spacing-huge-h
+div
+  .spacing-s-h
+h2.right Итого 54 200 ₽
+div
+  .spacing-huge-h
