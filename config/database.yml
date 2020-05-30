@@ -7,8 +7,8 @@ default: &default
 development:
   <<: *default
   database: obraz_development
-  # username: obraz
-  # password: peeshuBooL5haed
+  username: obraz
+  password: peeshuBooL5haed
 
 test:
   <<: *default

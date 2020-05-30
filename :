@@ -1,0 +1,7 @@
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+host    all       postgres      127.0.0.1/32        trust
+host    all       all           localhost           trust
+local   all       all                               peer
+host    all       all           10.110.0.0/21     md5
+local    all       all           127.0.0.1       trust
+
